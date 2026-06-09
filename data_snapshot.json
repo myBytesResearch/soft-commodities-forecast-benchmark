@@ -1,0 +1,28 @@
+{
+  "purpose": "Reproducibility pin. Documents the dataset window and ticker mapping used in the published benchmark. Running `make reproduce` fetches data at this end_date and asserts the per-asset diagnostics against results/<asset>_diagnostics.json.",
+  "source": "Yahoo Finance via yfinance",
+  "license_note": "Yahoo Finance Terms of Service prohibit data redistribution. This repo ships code only; you fetch the data yourself.",
+  "snapshot_end_date": "2024-12-31",
+  "fetch_start_date": "2000-01-01",
+  "tickers": {
+    "cocoa":  { "yahoo_symbol": "CC=F", "full_name": "ICE Cocoa Continuous Futures" },
+    "coffee": { "yahoo_symbol": "KC=F", "full_name": "ICE Coffee Continuous Futures (Arabica)" },
+    "sugar":  { "yahoo_symbol": "SB=F", "full_name": "ICE Sugar No. 11 Continuous Futures" },
+    "cotton": { "yahoo_symbol": "CT=F", "full_name": "ICE Cotton No. 2 Continuous Futures" }
+  },
+  "expected_first_pass_stats": {
+    "cocoa":  { "n_train_obs": 4756, "train_start": "2000-01-04", "train_end": "2018-12-28" },
+    "coffee": { "n_train_obs": 4753, "train_start": "2000-01-04", "train_end": "2018-12-28" },
+    "sugar":  { "n_train_obs": 4716, "train_start": "2000-03-02", "train_end": "2018-12-28" },
+    "cotton": { "n_train_obs": 4751, "train_start": "2000-01-04", "train_end": "2018-12-28" }
+  },
+  "tolerance": {
+    "parameter_relative_diff": 0.01,
+    "loglikelihood_relative_diff": 0.005,
+    "note": "Small drift may occur if Yahoo retroactively adjusts a historical close. The tolerance prevents flaky tests while still catching real divergence."
+  },
+  "reproduction_command": "make reproduce",
+  "git_commit_at_snapshot": "to-be-populated-by-CI",
+  "snapshot_taken_by": "myBytes Research",
+  "snapshot_taken_at": "2026-06-09"
+}

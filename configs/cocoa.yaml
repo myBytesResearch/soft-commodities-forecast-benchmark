@@ -1,0 +1,14 @@
+# =========================================================================
+# ICE Cocoa Continuous Futures (CC=F)
+# Inherits from configs/base.yaml; overrides asset-specific fields.
+# =========================================================================
+
+asset:
+  name: "cocoa"
+  ticker: "CC=F"
+  full_name: "ICE Cocoa Continuous Futures"
+
+pre_crisis_window:
+  event_id: "cocoa_2023_2024_supply_shock"
+  window_start: "2022-09-01"
+  window_end: "2023-03-05"

@@ -1,0 +1,57 @@
+# Environment & secrets
+.env
+.env.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Build
+build/
+dist/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# Data — raw and processed; users fetch themselves via yfinance
+data/raw/
+data/processed/
+data/cache/
+*.parquet
+*.feather
+!results/*.parquet
+
+# Model artifacts — keep diagnostics JSON only
+artifacts/*.pkl
+artifacts/*.h5
+!artifacts/.gitkeep
+
+# MLflow local store
+mlruns/
+mlflow.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

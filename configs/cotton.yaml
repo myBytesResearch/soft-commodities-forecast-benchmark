@@ -1,0 +1,14 @@
+# =========================================================================
+# ICE Cotton No. 2 Continuous Futures (CT=F)
+# Inherits from configs/base.yaml; overrides asset-specific fields.
+# =========================================================================
+
+asset:
+  name: "cotton"
+  ticker: "CT=F"
+  full_name: "ICE Cotton No. 2 Continuous Futures"
+
+pre_crisis_window:
+  event_id: "cotton_2022_supply_shock"
+  window_start: "2022-02-01"
+  window_end: "2022-08-01"

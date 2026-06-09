@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "soft-commodities-forecast-benchmark"
+version = "0.1.0"
+description = "Multi-asset GJR-GARCH baseline benchmark for soft commodity volatility (ICE Cocoa, Coffee, Sugar, Cotton) — companion repository to the myBytes Research methodology note."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+authors = [
+    { name = "Guido Winger", email = "gwinger@mybytes.com" },
+]
+license = { text = "MIT" }
+keywords = [
+    "garch", "gjr-garch", "volatility", "soft-commodities",
+    "ice-cocoa", "ice-coffee", "var-backtest", "walk-forward",
+    "reproducibility", "mybytes-research",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+
+dependencies = [
+    "numpy>=1.26,<2.0",
+    "pandas>=2.2",
+    "scipy>=1.13",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+    "arch>=7.0",
+    "statsmodels>=0.14",
+    "yfinance>=0.2.40",
+    "scikit-learn>=1.4",
+    "mlflow>=2.13",
+    "pyyaml>=6.0",
+    "loguru>=0.7",
+    "python-dotenv>=1.0",
+    "pyarrow>=15.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "black>=24.0",
+    "mypy>=1.10",
+    "jupyter>=1.0",
+    "ipykernel>=6.29",
+]
+
+[project.urls]
+"Homepage" = "https://mybytes.com/research/garch-soft-commodities-baseline-backtest"
+"Documentation" = "https://github.com/myBytesResearch/soft-commodities-forecast-benchmark#readme"
+"Source" = "https://github.com/myBytesResearch/soft-commodities-forecast-benchmark"
+"Methodology" = "https://mybytes.com/research/garch-soft-commodities-baseline-backtest"
+"Truth-Check protocol" = "https://mybytes.com/research/truth-check-protocol"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311", "py312"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q --strict-markers"
+markers = [
+    "integration: marks tests as integration tests (deselect with '-m \"not integration\"')",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]

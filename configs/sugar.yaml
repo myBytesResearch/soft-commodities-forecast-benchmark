@@ -1,0 +1,14 @@
+# =========================================================================
+# ICE Sugar No. 11 Continuous Futures (SB=F)
+# Inherits from configs/base.yaml; overrides asset-specific fields.
+# =========================================================================
+
+asset:
+  name: "sugar"
+  ticker: "SB=F"
+  full_name: "ICE Sugar No. 11 Continuous Futures"
+
+pre_crisis_window:
+  event_id: "sugar_2023_india_export_curb"
+  window_start: "2023-04-01"
+  window_end: "2023-10-01"

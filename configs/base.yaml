@@ -1,0 +1,46 @@
+# =========================================================================
+# Base configuration — shared across all commodities.
+# Per-asset configs override the `asset` field and may override others.
+# =========================================================================
+
+model:
+  name: "gjr_garch_t"
+  family: "garch"
+  description: "GJR-GARCH(1,1,1) with Student-t innovations"
+  mean: "Constant"
+  vol: "GARCH"
+  p: 1
+  o: 1
+  q: 1
+  power: 2.0
+  dist: "studentst"
+
+data:
+  return_method: "log"
+  return_scale: 100
+  train_start: "2000-01-01"
+  train_end: "2018-12-28"
+  test_start: "2019-01-01"
+  test_end: "2024-12-31"
+
+training:
+  optimizer: "auto"
+  update_freq: 5
+  show_warning: false
+  cov_type: "robust"
+  rescale: false
+
+backtest:
+  window_type: "expanding"
+  initial_window_days: 2520
+  refit_frequency_days: 21
+  forecast_horizon_days: 1
+  reestimate_full_model: true
+  var_levels: [0.95, 0.99]
+
+mlflow:
+  experiment_prefix: "soft_commodities_garch_baseline"
+  log_artifacts: true
+  log_plots: true
+
+random_seed: 42

@@ -1,0 +1,14 @@
+# =========================================================================
+# ICE Coffee Continuous Futures (Arabica) (KC=F)
+# Inherits from configs/base.yaml; overrides asset-specific fields.
+# =========================================================================
+
+asset:
+  name: "coffee"
+  ticker: "KC=F"
+  full_name: "ICE Coffee Continuous Futures (Arabica)"
+
+pre_crisis_window:
+  event_id: "coffee_2024_brazil_drought"
+  window_start: "2023-09-02"
+  window_end: "2024-03-05"

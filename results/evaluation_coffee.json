@@ -1,0 +1,671 @@
+{
+  "asset": "coffee",
+  "splits": {
+    "val": {
+      "n_obs": 504,
+      "vol_metrics": {
+        "qlike": 1.26690569360495,
+        "mse": 59.77833409598659,
+        "mae": 4.692033739481906,
+        "r2_oos": 0.04823383142731574,
+        "r2_oos_vs_har_rv": 0.13644101114206209
+      },
+      "var_backtests": {
+        "var_95": {
+          "kupiec_pof": {
+            "test_name": "kupiec_pof",
+            "statistic": 0.31659515815525197,
+            "pvalue": 0.573661050995737,
+            "n_violations": 28,
+            "n_observations": 504,
+            "expected_violations": 25.200000000000024,
+            "violation_rate": 0.05555555555555555,
+            "rejected": false
+          },
+          "christoffersen_cc": {
+            "test_name": "christoffersen_cc",
+            "statistic": 0.31659515815525197,
+            "pvalue": 0.8535957319397938,
+            "n_violations": 28,
+            "n_observations": 504,
+            "expected_violations": 25.200000000000024,
+            "violation_rate": 0.05555555555555555,
+            "rejected": false
+          }
+        },
+        "var_99": {
+          "kupiec_pof": {
+            "test_name": "kupiec_pof",
+            "statistic": 2.401448617664162,
+            "pvalue": 0.12122294976282544,
+            "n_violations": 2,
+            "n_observations": 504,
+            "expected_violations": 5.0400000000000045,
+            "violation_rate": 0.003968253968253968,
+            "rejected": false
+          },
+          "christoffersen_cc": {
+            "test_name": "christoffersen_cc",
+            "statistic": 2.401448617664162,
+            "pvalue": 0.3009761332720191,
+            "n_violations": 2,
+            "n_observations": 504,
+            "expected_violations": 5.0400000000000045,
+            "violation_rate": 0.003968253968253968,
+            "rejected": false
+          }
+        }
+      }
+    },
+    "test": {
+      "n_obs": 1258,
+      "vol_metrics": {
+        "qlike": 1.3353909764387095,
+        "mse": 74.20372826549604,
+        "mae": 5.32327358465095,
+        "r2_oos": 0.01488433210342821,
+        "r2_oos_vs_har_rv": 0.11246176806826591
+      },
+      "var_backtests": {
+        "var_95": {
+          "kupiec_pof": {
+            "test_name": "kupiec_pof",
+            "statistic": 0.07303603564440664,
+            "pvalue": 0.7869665437313397,
+            "n_violations": 65,
+            "n_observations": 1258,
+            "expected_violations": 62.900000000000055,
+            "violation_rate": 0.051669316375198726,
+            "rejected": false
+          },
+          "christoffersen_cc": {
+            "test_name": "christoffersen_cc",
+            "statistic": 0.11765646087808435,
+            "pvalue": 0.942868711392925,
+            "n_violations": 65,
+            "n_observations": 1258,
+            "expected_violations": 62.900000000000055,
+            "violation_rate": 0.051669316375198726,
+            "rejected": false
+          }
+        },
+        "var_99": {
+          "kupiec_pof": {
+            "test_name": "kupiec_pof",
+            "statistic": 0.5748778505664802,
+            "pvalue": 0.4483270730002058,
+            "n_violations": 10,
+            "n_observations": 1258,
+            "expected_violations": 12.58000000000001,
+            "violation_rate": 0.00794912559618442,
+            "rejected": false
+          },
+          "christoffersen_cc": {
+            "test_name": "christoffersen_cc",
+            "statistic": 3.973642492253455,
+            "pvalue": 0.1371306379088031,
+            "n_violations": 10,
+            "n_observations": 1258,
+            "expected_violations": 12.58000000000001,
+            "violation_rate": 0.00794912559618442,
+            "rejected": false
+          }
+        }
+      }
+    }
+  },
+  "pre_crisis_var_coverage": {
+    "coffee_2024_brazil_drought": {
+      "window_start": "2023-09-02",
+      "window_end": "2024-03-05",
+      "n_obs": 126,
+      "backtests": {
+        "var_95": {
+          "kupiec_pof": {
+            "test_name": "kupiec_pof",
+            "statistic": 0.015269282315252042,
+            "pvalue": 0.9016565882290914,
+            "n_violations": 6,
+            "n_observations": 126,
+            "expected_violations": 6.300000000000006,
+            "violation_rate": 0.047619047619047616,
+            "rejected": false
+          },
+          "christoffersen_cc": {
+            "test_name": "christoffersen_cc",
+            "statistic": 0.015269282315252042,
+            "pvalue": 0.9923944286888516,
+            "n_violations": 6,
+            "n_observations": 126,
+            "expected_violations": 6.300000000000006,
+            "violation_rate": 0.047619047619047616,
+            "rejected": false
+          }
+        },
+        "var_99": {
+          "kupiec_pof": {
+            "test_name": "kupiec_pof",
+            "statistic": NaN,
+            "pvalue": NaN,
+            "n_violations": 0,
+            "n_observations": 126,
+            "expected_violations": 1.2600000000000011,
+            "violation_rate": 0.0,
+            "rejected": false
+          },
+          "christoffersen_cc": {
+            "test_name": "christoffersen_cc",
+            "statistic": 0.0,
+            "pvalue": 1.0,
+            "n_violations": 0,
+            "n_observations": 126,
+            "expected_violations": 1.2600000000000011,
+            "violation_rate": 0.0,
+            "rejected": false
+          }
+        }
+      }
+    }
+  },
+  "black_swan_detection": {
+    "lookback_windows_days": [
+      30,
+      90,
+      180
+    ],
+    "baselines": {
+      "median_252d": {
+        "name": "median_252d",
+        "statistic": "median",
+        "window_days": 252
+      },
+      "ema_lambda094": {
+        "name": "ema_lambda094",
+        "statistic": "ema",
+        "window_days": 252,
+        "ema_lambda": 0.94
+      }
+    },
+    "by_baseline": {
+      "median_252d": {
+        "conservative": {
+          "calibration": {
+            "multiplier": 1.4,
+            "realised_fpr": 0.042986425339366516,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "median",
+            "ema_lambda": null,
+            "n_eval": 442,
+            "ratio_min": 0.7492088905451907,
+            "ratio_median": 1.009720718758949,
+            "ratio_max": 1.6391365709252637
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.4,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.4,
+                  "lookback_days": 90,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "180d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.4,
+                  "lookback_days": 180,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                }
+              }
+            }
+          }
+        },
+        "sensitive": {
+          "calibration": {
+            "multiplier": 1.35,
+            "realised_fpr": 0.07692307692307693,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "median",
+            "ema_lambda": null,
+            "n_eval": 442,
+            "ratio_min": 0.7492088905451907,
+            "ratio_median": 1.009720718758949,
+            "ratio_max": 1.6391365709252637
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.35,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.35,
+                  "lookback_days": 90,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "180d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.35,
+                  "lookback_days": 180,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ema_lambda094": {
+        "conservative": {
+          "calibration": {
+            "multiplier": 1.2,
+            "realised_fpr": 0.049773755656108594,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 442,
+            "ratio_min": 0.8437576621359207,
+            "ratio_median": 0.9875018424570859,
+            "ratio_max": 1.3846354979494446
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 90,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "180d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 180,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                }
+              }
+            }
+          }
+        },
+        "sensitive": {
+          "calibration": {
+            "multiplier": 1.2,
+            "realised_fpr": 0.049773755656108594,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 442,
+            "ratio_min": 0.8437576621359207,
+            "ratio_median": 0.9875018424570859,
+            "ratio_max": 1.3846354979494446
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 90,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "180d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 180,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "baseline_sensitivity": {
+      "baseline_a": "median_252d",
+      "baseline_b": "ema_lambda094",
+      "comparisons": {
+        "conservative": {
+          "multiplier_a": 1.4,
+          "multiplier_b": 1.2,
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "30d": {
+                "lead_a": 0,
+                "lead_b": 0,
+                "delta_days": 0.0
+              },
+              "90d": {
+                "lead_a": 0,
+                "lead_b": 0,
+                "delta_days": 0.0
+              },
+              "180d": {
+                "lead_a": 0,
+                "lead_b": 0,
+                "delta_days": 0.0
+              }
+            }
+          }
+        },
+        "sensitive": {
+          "multiplier_a": 1.35,
+          "multiplier_b": 1.2,
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "30d": {
+                "lead_a": 0,
+                "lead_b": 0,
+                "delta_days": 0.0
+              },
+              "90d": {
+                "lead_a": 0,
+                "lead_b": 0,
+                "delta_days": 0.0
+              },
+              "180d": {
+                "lead_a": 0,
+                "lead_b": 0,
+                "delta_days": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    "pool_enabled": true,
+    "pool_assets_loaded": [
+      "cocoa",
+      "coffee",
+      "cotton",
+      "sugar"
+    ],
+    "by_baseline_pooled": {
+      "median_252d": {
+        "conservative": {
+          "calibration": {
+            "multiplier": 1.4,
+            "realised_fpr": 0.04920814479638009,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "median",
+            "ema_lambda": null,
+            "n_eval_total": 1768,
+            "n_eval_per_asset": {
+              "cocoa": 442,
+              "coffee": 442,
+              "sugar": 442,
+              "cotton": 442
+            },
+            "pool_assets": [
+              "cocoa",
+              "coffee",
+              "cotton",
+              "sugar"
+            ],
+            "ratio_min": 0.7400327658979177,
+            "ratio_median": 0.9936716130875145,
+            "ratio_max": 1.8077752497434705
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.4,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.4,
+                  "lookback_days": 90,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "180d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.4,
+                  "lookback_days": 180,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                }
+              }
+            }
+          }
+        },
+        "sensitive": {
+          "calibration": {
+            "multiplier": 1.35,
+            "realised_fpr": 0.07635746606334842,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "median",
+            "ema_lambda": null,
+            "n_eval_total": 1768,
+            "n_eval_per_asset": {
+              "cocoa": 442,
+              "coffee": 442,
+              "sugar": 442,
+              "cotton": 442
+            },
+            "pool_assets": [
+              "cocoa",
+              "coffee",
+              "cotton",
+              "sugar"
+            ],
+            "ratio_min": 0.7400327658979177,
+            "ratio_median": 0.9936716130875145,
+            "ratio_max": 1.8077752497434705
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.35,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.35,
+                  "lookback_days": 90,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "180d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.35,
+                  "lookback_days": 180,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ema_lambda094": {
+        "conservative": {
+          "calibration": {
+            "multiplier": 1.2,
+            "realised_fpr": 0.03619909502262444,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval_total": 1768,
+            "n_eval_per_asset": {
+              "cocoa": 442,
+              "coffee": 442,
+              "sugar": 442,
+              "cotton": 442
+            },
+            "pool_assets": [
+              "cocoa",
+              "coffee",
+              "cotton",
+              "sugar"
+            ],
+            "ratio_min": 0.8437576621359207,
+            "ratio_median": 0.9869884679686707,
+            "ratio_max": 1.3846354979494446
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 90,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "180d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.2,
+                  "lookback_days": 180,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                }
+              }
+            }
+          }
+        },
+        "sensitive": {
+          "calibration": {
+            "multiplier": 1.15,
+            "realised_fpr": 0.07070135746606335,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval_total": 1768,
+            "n_eval_per_asset": {
+              "cocoa": 442,
+              "coffee": 442,
+              "sugar": 442,
+              "cotton": 442
+            },
+            "pool_assets": [
+              "cocoa",
+              "coffee",
+              "cotton",
+              "sugar"
+            ],
+            "ratio_min": 0.8437576621359207,
+            "ratio_median": 0.9869884679686707,
+            "ratio_max": 1.3846354979494446
+          },
+          "events": {
+            "coffee_2024_brazil_drought": {
+              "lookback_windows": {
+                "30d": {
+                  "lead_time_days": 0,
+                  "threshold_multiplier": 1.15,
+                  "lookback_days": 30,
+                  "detection_date": null,
+                  "note": "no detection in lookback window"
+                },
+                "90d": {
+                  "lead_time_days": 52,
+                  "threshold_multiplier": 1.15,
+                  "lookback_days": 90,
+                  "detection_date": "2024-07-10",
+                  "signal_at_detection": 2.7408122500435033,
+                  "baseline_at_detection": 2.3142815901793847,
+                  "ratio_at_detection": 1.1843036999793346
+                },
+                "180d": {
+                  "lead_time_days": 135,
+                  "threshold_multiplier": 1.15,
+                  "lookback_days": 180,
+                  "detection_date": "2024-04-18",
+                  "signal_at_detection": 2.5057706567771656,
+                  "baseline_at_detection": 2.098800764122842,
+                  "ratio_at_detection": 1.1939059198048318
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pool_vs_single_multiplier": {
+      "median_252d": {
+        "conservative": {
+          "multiplier_single": 1.4,
+          "multiplier_pooled": 1.4,
+          "delta_abs": 0.0,
+          "delta_pct": 0.0
+        },
+        "sensitive": {
+          "multiplier_single": 1.35,
+          "multiplier_pooled": 1.35,
+          "delta_abs": 0.0,
+          "delta_pct": 0.0
+        }
+      },
+      "ema_lambda094": {
+        "conservative": {
+          "multiplier_single": 1.2,
+          "multiplier_pooled": 1.2,
+          "delta_abs": 0.0,
+          "delta_pct": 0.0
+        },
+        "sensitive": {
+          "multiplier_single": 1.2,
+          "multiplier_pooled": 1.15,
+          "delta_abs": -0.050000000000000044,
+          "delta_pct": -4.1666666666666705
+        }
+      }
+    }
+  }
+}
