@@ -203,7 +203,7 @@ Parquet files as artefacts. Default backend is a local SQLite file
 This methodology is documented under the myBytes truth-check protocol
 (seven steps: claim extraction, classification, anchor mapping,
 reproducibility, steel-man, limitations, independent review). The
-status of the seven steps for the companion note is reported in the
+status of the seven steps for the companion article is reported in the
 article's frontmatter.
 
 → [Truth-check protocol (German)](https://mybytes.com/research/truth-check-protocol)

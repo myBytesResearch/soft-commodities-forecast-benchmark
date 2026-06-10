@@ -14,10 +14,10 @@
 
 # soft-commodities-forecast-benchmark
 
-**Companion repository to the myBytes Research methodology note on
+**Companion repository to the myBytes Research methodology article on
 GJR-GARCH baseline backtests across four soft commodities.**
 
-→ Methodology note (German): https://mybytes.com/research/garch-soft-commodities-baseline-backtest
+→ Methodology article (German): https://mybytes.com/research/garch-soft-commodities-baseline-backtest
 
 ---
 
@@ -37,18 +37,18 @@ GJR-GARCH is the industry-standard model for asymmetric volatility.
 We build it deliberately as the baseline layer of a multi-year
 research programme on soft-commodity volatility. What this baseline
 delivers and what it structurally does not deliver is the subject of
-the linked methodology note.
+the linked methodology article.
 
 ## What this repository reproduces
 
-- All per-commodity model parameters cited in the note (mean, omega,
+- All per-commodity model parameters cited in the article (mean, omega,
   alpha, gamma, beta, nu) under identical walk-forward split mechanics
 - All VaR backtests (Kupiec-POF, Christoffersen-CC) on the aggregate
   test period 2019–2024
 - Pre-crisis-window VaR coverage as a separate discipline (aggregate
   coverage measures backward-looking adaptation; the pre-crisis
   window measures what was visible *before* the stress event)
-- The lead-time finding highlighted in the note (zero lead time for
+- The lead-time finding highlighted in the article (zero lead time for
   single-layer GJR-GARCH on the 2023/24 cocoa supply shock and on the
   corresponding stress episodes for coffee, sugar and cotton)
 
@@ -129,9 +129,9 @@ a terse tutorial: it shows stylized facts, diagnostics, the model
 fit, walk-forward backtest mechanics, VaR tests, the pre-crisis
 window and the methodological self-criticism side by side.
 
-## On the methodology note
+## On the methodology article
 
-The companion note on mybytes.com explains:
+The companion article on mybytes.com explains:
 
 - why classical GARCH passes the VaR discipline and simultaneously
   produces zero lead time before each of the four stress episodes
