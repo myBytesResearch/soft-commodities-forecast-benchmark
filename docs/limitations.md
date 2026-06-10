@@ -1,84 +1,95 @@
+<!--
+=============================================================================
+                    ____        __
+   ____ ___  __  __/ __ )__  __/ /____  _____
+  / __ `__ \/ / / / __  / / / / __/ _ \/ ___/
+ / / / / / / /_/ / /_/ / /_/ / /_/  __(__  )
+/_/ /_/ /_/\__, /_____/\__, /\__/\___/____/
+          /____/      /____/
+
+ myBytes.com
+ Copyright (c) 2026 myBytes GmbH. All rights reserved.
+=============================================================================
+-->
+
 # Limitations
 
-Was dieser Backtest **nicht** leistet. Eine eigenständige Dokumentation
-der bekannten Schwächen der Implementation, getrennt von der
-methodischen Beschreibung. Wer mit unseren Ergebnissen weiterarbeitet,
-sollte zuerst hier lesen.
+What this backtest **does not** deliver. A standalone documentation
+of the known weaknesses of the implementation, separated from the
+methodology description. Anyone planning further work on top of our
+results should read this first.
 
 ---
 
-## 1 · Einzelne Stress-Episode pro Commodity
+## 1 · A single stress episode per commodity
 
-Die Pre-Crisis-Fenster-Auswertung basiert pro Commodity auf einer
-einzigen Stress-Episode (2023/24 Cocoa-Spike, 2024 Coffee-Brazil-
-Drought, 2023 Sugar-India-Export-Curb, 2022 Cotton-Supply-Shock).
-**Eine Episode ist keine Stichprobe.** Die Aussage *„Vorlaufzeit
-gleich null"* bezieht sich auf diese eine Episode pro Commodity.
-Eine Validierung auf weiteren Stress-Episoden steht aus und ist
-Gegenstand der nächsten Forschungs-Stufe.
+The pre-crisis-window evaluation per commodity rests on a single
+stress episode (2023/24 cocoa supply shock, 2024 coffee Brazil
+drought, 2023 sugar India export curb, 2022 cotton supply shock).
+**One episode is not a sample.** The lead-time statement *"zero
+lead time"* refers to that one episode per commodity. Validation on
+further stress episodes is pending and is the subject of the next
+research stage.
 
-## 2 · Look-Ahead-Bias in der Event-Definition
+## 2 · Look-ahead bias in event definition
 
-Die Event-Fenster sind manuell aus der Marktgeschichte ausgewählt.
-Wir wissen *jetzt*, dass die Cocoa-Spike 2023/24 stattgefunden hat;
-ein Modell, das sie *damals* hätte detektieren sollen, hätte das
-Datum nicht gekannt. Diese Asymmetrie ist im Verfahren bewusst — die
-Aussage über Vorlaufzeit ist ein **konditional-auf-Event**-Befund,
-keine Out-of-Sample-Detektion in Echtzeit.
+The event windows were chosen manually from market history. We know
+*now* that the 2023/24 cocoa spike occurred; a model that should have
+detected it *then* would not have known the date. This asymmetry is
+deliberate in the procedure — the lead-time statement is a
+**conditional-on-event** finding, not a real-time out-of-sample
+detection.
 
-## 3 · GJR-GARCH-Spezifikation ist fest
+## 3 · GJR-GARCH specification is fixed
 
-Wir verwenden für alle vier Commodities GJR(1,1) mit Student-t.
-Eine Spezifikations-Suche (p, o, q oder Verteilungs-Variante)
-könnte für einzelne Commodities zu marginal besseren Fits führen.
-Wir haben darauf bewusst verzichtet, weil Spezifikations-Suchen
-über Walk-Forward-Backtests eine bekannte Quelle von Daten-
-Snooping sind. Wer mit anderen Spezifikationen experimentiert,
-sollte das in einem separaten Repository mit eigenen Snapshot-
-Pins tun.
+We use GJR(1,1)-t for all four commodities. A specification search
+(p, o, q or distribution choice) could yield marginally better fits
+for individual commodities. We deliberately abstained from it because
+specification searches over walk-forward backtests are a known source
+of data snooping. Anyone experimenting with alternative
+specifications should do so in a separate repository with their own
+snapshot pins.
 
-## 4 · Yahoo-Finance-Datenqualität
+## 4 · Yahoo Finance data quality
 
-Yahoo-Daten für Continuous Futures sind keine Tier-1-Marktdaten.
-Sie sind im Vergleich zu ICE Data Services oder Bloomberg-Feeds
-weniger sauber: gelegentliche rückwirkende Korrekturen, fehlende
-Halbtags-Handelstage, Zeitzonen-Inkonsistenzen bei Asien-Sessions.
-Für **methodische Demonstration** ist die Qualität ausreichend. Für
-**produktive Risk-Anwendungen** sollte ein lizenzierter Vendor-Feed
-verwendet werden (siehe `LICENSES.md`).
+Yahoo data for continuous futures are not Tier-1 market data. They
+are less clean than ICE Data Services or Bloomberg feeds: occasional
+retroactive revisions, missing half-day trading sessions, time-zone
+inconsistencies on Asian sessions. For **methodological demonstration**
+the quality is sufficient. For **production risk applications** a
+licensed vendor feed should be used (see `LICENSES.md`).
 
-## 5 · Continuous-Futures-Roll-Mechanik
+## 5 · Continuous-futures roll mechanics
 
-Yahoo's Continuous-Futures-Zeitreihen verwenden eine eigene Roll-
-Methode, die nicht öffentlich dokumentiert ist. Roll-Anpassungen
-können kurzfristige Volatilitäts-Sprünge erzeugen, die nicht
-Markt- sondern Roll-Artefakte sind. Wir filtern diese nicht
-explizit. Für sehr feine Tail-Risk-Analysen ist eine
-selbst-implementierte Roll-Methode mit dokumentierten Adjustment-
-Regeln vorzuziehen.
+Yahoo's continuous-futures series use a proprietary roll method that
+is not publicly documented. Roll adjustments can create short-term
+volatility jumps that are roll artefacts, not market signal. We do
+not filter these explicitly. For very fine tail-risk analysis a
+self-implemented roll method with documented adjustment rules is
+preferable.
 
-## 6 · Backend-Abhängigkeit der Optimierung
+## 6 · Backend dependence of the optimisation
 
-Die GARCH-MLE-Optimierung im `arch`-Package nutzt SciPy-Optimierer
-(Default: SLSQP). Je nach BLAS-Backend (OpenBLAS, MKL, Accelerate)
-können die geschätzten Parameter in der achten Nachkommastelle
-abweichen. Wir setzen Toleranzen in `data_snapshot.json` so, dass
-diese Drift toleriert wird. Wer exakt-bit-reproduzierbar sein muss,
-sollte eine reproduzierbare BLAS-Konfiguration verwenden.
+The GARCH MLE optimisation in the `arch` package uses SciPy
+optimisers (default: SLSQP). Depending on the BLAS backend (OpenBLAS,
+MKL, Accelerate) the estimated parameters can differ in the eighth
+decimal place. We set tolerances in `data_snapshot.json` so that this
+drift is tolerated. For bit-exact reproducibility a reproducible
+BLAS configuration is required.
 
-## 7 · Was diese Notiz nicht abdeckt
+## 7 · What this document does not cover
 
-- Vergleich gegen alternative Volatilitäts-Modelle (EGARCH, FIGARCH,
-  Realized-GARCH, MS-GARCH, HMM, GARCH-MIDAS) — Gegenstand der
-  nächsten Forschungs-Stufen
-- Kreuzkorrelationen zwischen den vier Commodities — eigenes
-  Forschungs-Thema
-- Optionsmarkt-Validierung gegen implizite Volatilität — siehe
-  künftige Notiz zur Realized-vs-Implied-Vola für den Einkauf
-- Anwendung auf Procurement-Hedging — methodisches Material,
-  keine operative Hedging-Empfehlung
+- Comparison against alternative volatility models (EGARCH, FIGARCH,
+  Realized GARCH, MS-GARCH, HMM, GARCH-MIDAS) — material for the
+  next research stages
+- Cross-correlations between the four commodities — a separate
+  research topic
+- Options-market validation against implied volatility — see the
+  forthcoming realised-versus-implied volatility note for procurement
+- Application to procurement hedging — methodological material, not
+  an operational hedging recommendation
 
 ---
 
-Diese Liste ist nicht abschließend. Wer eine weitere Limitation
-findet, ist eingeladen, ein Issue im Repository zu öffnen.
+This list is not exhaustive. Anyone identifying an additional
+limitation is invited to open an issue in the repository.

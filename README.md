@@ -1,180 +1,152 @@
+<!--
+=============================================================================
+                    ____        __
+   ____ ___  __  __/ __ )__  __/ /____  _____
+  / __ `__ \/ / / / __  / / / / __/ _ \/ ___/
+ / / / / / / /_/ / /_/ / /_/ / /_/  __(__  )
+/_/ /_/ /_/\__, /_____/\__, /\__/\___/____/
+          /____/      /____/
+
+ myBytes.com
+ Copyright (c) 2026 myBytes GmbH. All rights reserved.
+=============================================================================
+-->
+
 # soft-commodities-forecast-benchmark
 
-**Begleit-Repository zur methodischen Notiz von myBytes Research zu
-GJR-GARCH-Baseline-Backtests auf vier Soft Commodities.**
+**Companion repository to the myBytes Research methodology note on
+GJR-GARCH baseline backtests across four soft commodities.**
 
-> Companion repository to the myBytes Research methodology note on
-> GJR-GARCH baseline backtests across four soft commodities. See the
-> English Quickstart below for non-German speakers.
+→ Methodology note (German): https://mybytes.com/research/garch-soft-commodities-baseline-backtest
 
 ---
 
-## Worum es geht
+## Scope
 
-Dieses Repository enthält den Code, die Konfigurationen und die
-Reproduktions-Werkzeuge für einen mehrjährigen Walk-Forward-Backtest
-eines klassischen GJR-GARCH(1,1)-Modells mit Student-t-Innovationen
-auf vier ICE-Soft-Commodity-Continuous-Futures:
+This repository contains the code, configurations and reproduction
+tooling for a multi-year walk-forward backtest of a classical
+GJR-GARCH(1,1) model with Student-t innovations on four ICE
+Continuous Futures:
 
 - **ICE Cocoa** (CC=F)
 - **ICE Coffee** (KC=F, Arabica)
 - **ICE Sugar** (SB=F, No. 11)
 - **ICE Cotton** (CT=F, No. 2)
 
-Methodisch ist das Modell der Branchen-Standard für asymmetrische
-Volatilitäts-Modellierung. Wir bauen es bewusst als Baseline-Schicht
-eines mehrjährig angelegten Forschungs-Programms zu Soft-Commodity-
-Volatilität. Was diese Baseline leistet und was sie strukturell nicht
-leistet, ist Gegenstand der dazugehörigen
-[methodischen Notiz](https://mybytes.com/research/garch-soft-commodities-baseline-backtest).
+GJR-GARCH is the industry-standard model for asymmetric volatility.
+We build it deliberately as the baseline layer of a multi-year
+research programme on soft-commodity volatility. What this baseline
+delivers and what it structurally does not deliver is the subject of
+the linked methodology note.
 
-## Was hier reproduzierbar ist
+## What this repository reproduces
 
-- Alle in der Notiz zitierten Modell-Parameter pro Commodity
-  (Mean, Omega, Alpha, Gamma, Beta, Nu) mit identischer
-  Walk-Forward-Split-Mechanik
-- Alle VaR-Backtests (Kupiec-POF, Christoffersen-CC) auf den
-  Aggregat-Perioden 2019–2024
-- Pre-Crisis-Fenster-VaR-Coverage als zusätzliche Disziplin
-  (Aggregat-Coverage misst Backward-Looking-Anpassung; das
-  Pre-Crisis-Fenster misst, was vor der Krise messbar war)
-- Die für den Artikel hervorgehobene Vorlaufzeit-Aussage
-  („Vorlaufzeit gleich null für GJR-GARCH allein vor der
-  2023/24er Cocoa-Spike") als reproduzierbarer Output
+- All per-commodity model parameters cited in the note (mean, omega,
+  alpha, gamma, beta, nu) under identical walk-forward split mechanics
+- All VaR backtests (Kupiec-POF, Christoffersen-CC) on the aggregate
+  test period 2019–2024
+- Pre-crisis-window VaR coverage as a separate discipline (aggregate
+  coverage measures backward-looking adaptation; the pre-crisis
+  window measures what was visible *before* the stress event)
+- The lead-time finding highlighted in the note (zero lead time for
+  single-layer GJR-GARCH on the 2023/24 cocoa supply shock and on the
+  corresponding stress episodes for coffee, sugar and cotton)
 
-Reproduktion mit einem Befehl:
+One-command reproduction:
 
 ```bash
 make reproduce
 ```
 
-Der Befehl holt die Daten frisch via `yfinance` an einem in
-`data_snapshot.json` eingefrorenen Endstichtag, läuft die volle
-Pipeline (Training, Walk-Forward-Vorhersage, Evaluation) und
-vergleicht die frisch geschätzten Parameter und Log-Likelihoods
-gegen die in `results/<asset>_diagnostics.json` hinterlegten
-Werte. Die Toleranz für kleine Yahoo-Daten-Driften ist im
-Snapshot dokumentiert.
+The command fetches the data fresh via `yfinance` at a snapshot
+end-date pinned in `data_snapshot.json`, runs the full pipeline
+(training, walk-forward prediction, evaluation) and asserts the
+freshly estimated parameters and log-likelihoods against the values
+stored in `results/<asset>_diagnostics.json`. The tolerance for
+small Yahoo-Finance data drifts is documented in the snapshot file.
 
-## Was hier nicht enthalten ist
+## What this repository does not contain
 
-Drei Dinge ausdrücklich:
+Three points explicitly:
 
-1. **Keine Daten.** Yahoo Finance verbietet Redistribution gescraper
-   Daten. Sie holen die Daten selbst über `yfinance`. Der Code in
-   diesem Repository ist auf einen festen Snapshot-Endstichtag gepinnt,
-   damit die Reproduktion deterministisch bleibt. Lizenz-Details:
-   [`LICENSES.md`](LICENSES.md).
-2. **Keine Folgestufen.** HMM-Regime-Detektion, GARCH-MIDAS mit
-   Wetter- und COT-Daten, Foundation-Modelle für Volatilitäts-
-   Targets — alles im myBytes-Forschungs-Programm vorgesehen, alles
-   nicht in diesem Baseline-Repository. Wenn diese Schichten gebaut
-   sind, kommen sie in eigene Begleit-Repositories.
-3. **Keine Anlage- oder Hedging-Empfehlung.** Der Backtest ist
-   methodisches Material, kein Handels-System. Siehe Disclaimer am
-   Ende.
+1. **No data.** Yahoo Finance Terms of Service prohibit redistribution
+   of fetched data. You fetch the data yourself via `yfinance`. The
+   code is pinned to a fixed snapshot end-date so reproduction stays
+   deterministic. License details: [`LICENSES.md`](LICENSES.md).
+2. **No follow-on layers.** HMM regime detection, GARCH-MIDAS with
+   weather and COT data, foundation models for volatility targets —
+   all of these are planned in the myBytes research programme, none
+   of them belong in this baseline repository. When those layers are
+   built, they will land in their own companion repositories.
+3. **Not an investment or hedging recommendation.** The backtest is
+   methodological material, not a trading system. See the disclaimer
+   at the end.
 
-## Schnellstart in 10 Minuten
+## Quickstart in 10 minutes
 
-Voraussetzung: Python 3.11 oder 3.12, ein frisches virtuelles
-Umfeld.
+Prerequisite: Python 3.11 or 3.12, a fresh virtual environment.
 
 ```bash
-# 1. Repository klonen und Abhängigkeiten installieren
+# 1. Clone the repository and install runtime dependencies
 git clone https://github.com/myBytesResearch/soft-commodities-forecast-benchmark.git
 cd soft-commodities-forecast-benchmark
 make install
 
-# 2. Umgebungs-Datei aus dem Beispiel ableiten
+# 2. Derive your environment file from the example
 cp .env.example .env
-# (Default-Werte funktionieren für die meisten Setups; siehe Kommentare in .env.example)
+# (defaults work for most setups; see comments inside .env.example)
 
-# 3. Eine einzelne Commodity reproduzieren
+# 3. Reproduce one commodity
 make reproduce-cocoa
 
-# 4. Alle vier Commodities reproduzieren
+# 4. Reproduce all four
 make reproduce
 ```
 
-Wenn am Ende der Reproduktion „reproduction match for cocoa" und
-analog für die anderen drei Commodities erscheint, ist die
-Reproduktion gelungen. Bei Drift-Meldungen prüfen Sie zuerst, ob
-Ihr Snapshot-Endstichtag mit `data_snapshot.json` übereinstimmt.
+If the run finishes with `reproduction match for cocoa` (and the
+equivalent for the other three commodities), reproduction succeeded.
+On drift warnings, first verify that your snapshot end-date matches
+`data_snapshot.json`.
 
-## Struktur
+## Repository layout
 
 ```
-src/benchmark/        — Modell-Code (train, predict, evaluate, reproduce)
-configs/              — Pro Commodity ein Konfigurations-File, plus base.yaml
-results/              — Diagnostics-JSON pro Commodity (Goldstandard-Werte)
-notebooks/            — Forschungs-Notebooks mit ausführlicher Methodik
-docs/                 — Methodologie und Limitations als eigenständige Dokumente
-tests/                — Unit-Tests und Integrations-Tests
-artifacts/            — Output frischer Läufe (gitignored)
-data_snapshot.json    — Reproduzierbarkeits-Pin (Tickers, Endstichtag, Toleranz)
+src/benchmark/        Model code (train, predict, evaluate, reproduce)
+configs/              One YAML per commodity plus base.yaml
+results/              Diagnostics JSON per commodity (gold-standard values)
+notebooks/            Research notebooks with the full methodological walk
+docs/                 Standalone methodology and limitations documents
+tests/                Unit and integration tests
+artifacts/            Output of fresh runs (gitignored)
+data_snapshot.json    Reproducibility pin (tickers, end-date, tolerance)
 ```
 
-## Forschungs-Notebooks
+## Research notebooks
 
-Im Verzeichnis `notebooks/` liegen ausführliche Forschungs-Notebooks,
-die den methodischen Weg von der Daten-Exploration bis zur Bewertung
-der VaR-Disziplin sichtbar führen. Sie sind bewusst kein knappes
-Tutorial: sie zeigen Stylized Facts, Diagnostics, Modell-Fit,
-Walk-Forward-Backtest, VaR-Tests, Pre-Crisis-Fenster und die
-methodische Selbstkritik nebeneinander.
+`notebooks/` contains a detailed research-style notebook walking from
+data exploration to VaR-discipline evaluation. It is deliberately not
+a terse tutorial: it shows stylized facts, diagnostics, the model
+fit, walk-forward backtest mechanics, VaR tests, the pre-crisis
+window and the methodological self-criticism side by side.
 
-## Zur methodischen Notiz
+## On the methodology note
 
-Die zugehörige Notiz auf mybytes.com erklärt:
+The companion note on mybytes.com explains:
 
-- warum klassisches GARCH die VaR-Disziplin besteht und gleichzeitig
-  null Vorlaufzeit vor der Cocoa-Spike 2023/24 produziert
-- warum das kein Bug ist, sondern der erwartete Befund
-- welche zweite Modell-Schicht für Frühwarnung nötig ist und in
-  welchem Zeitrahmen wir sie veröffentlichen
+- why classical GARCH passes the VaR discipline and simultaneously
+  produces zero lead time before each of the four stress episodes
+- why this is not a bug but the expected finding
+- which second model layer is needed for early warning, and on what
+  schedule we plan to publish it
 
-→ [Das Single-GARCH-Limit auf Soft Commodities](https://mybytes.com/research/garch-soft-commodities-baseline-backtest)
+→ [The single-GARCH limit on soft commodities (German)](https://mybytes.com/research/garch-soft-commodities-baseline-backtest)
+→ [Truth-check protocol (German)](https://mybytes.com/research/truth-check-protocol)
 
 ## Disclaimer
 
-Diese Implementation und die zitierten Backtest-Zahlen beschreiben
-einen Walk-Forward-Backtest aus unserer eigenen Forschungs-Praxis.
-Sie sind keine Anlage- und keine Hedging-Empfehlung. Die genannten
-Performance-Aussagen beziehen sich auf eine spezifische Test-Setup-
-Konfiguration und sind nicht ohne weiteres auf andere Anwendungs-
-Szenarien übertragbar.
-
----
-
-# English Quickstart
-
-This repository reproduces the GJR-GARCH(1,1)-with-Student-t-innovations
-baseline benchmark across four ICE Soft Commodity Continuous Futures
-(Cocoa, Coffee, Sugar, Cotton). It is the companion to the myBytes
-Research methodology note linked below.
-
-```bash
-git clone https://github.com/myBytesResearch/soft-commodities-forecast-benchmark.git
-cd soft-commodities-forecast-benchmark
-make install
-cp .env.example .env
-make reproduce
-```
-
-The `make reproduce` target fetches the data fresh via `yfinance` at
-a snapshot end-date pinned in `data_snapshot.json`, runs the full
-pipeline for all four commodities, and asserts the fresh parameters
-and log-likelihoods against the stored diagnostics within a documented
-relative tolerance.
-
-**This repository ships code only.** Yahoo Finance Terms of Service
-forbid data redistribution; you fetch the data yourself. See
-`LICENSES.md` for the full license trifecta (code MIT, data sources,
-third-party libraries).
-
-For non-English methodology: the article and the methodology
-documentation in `docs/` are in German. The code, configuration, and
-operational commands are in English.
-
-→ [Methodology note](https://mybytes.com/research/garch-soft-commodities-baseline-backtest)
-→ [Truth-Check protocol](https://mybytes.com/research/truth-check-protocol)
+This implementation and the backtest figures it produces describe a
+walk-forward backtest from our own research practice. They are not an
+investment recommendation and not a hedging recommendation. The
+quoted performance figures refer to a specific test-setup
+configuration and are not transferable without further analysis to
+other use cases.

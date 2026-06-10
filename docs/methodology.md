@@ -1,209 +1,219 @@
-# Methodologie
+<!--
+=============================================================================
+                    ____        __
+   ____ ___  __  __/ __ )__  __/ /____  _____
+  / __ `__ \/ / / / __  / / / / __/ _ \/ ___/
+ / / / / / / /_/ / /_/ / /_/ / /_/  __(__  )
+/_/ /_/ /_/\__, /_____/\__, /\__/\___/____/
+          /____/      /____/
 
-Vollständige Beschreibung der Modell-Spezifikation, der Daten-
-Aufbereitung, der Walk-Forward-Mechanik und der Evaluations-
-Disziplin. Diese Notiz ist die Begleit-Dokumentation zum
-Repository-Code; die operative Zusammenfassung steht im
-[README](../README.md).
+ myBytes.com
+ Copyright (c) 2026 myBytes GmbH. All rights reserved.
+=============================================================================
+-->
 
----
+# Methodology
 
-## 1 · Modell-Spezifikation
-
-### 1.1 GJR-GARCH(1,1) mit Student-t-Innovationen
-
-Die Mean- und Volatility-Equation:
-
-$$r_t = \mu + \varepsilon_t$$
-
-$$\sigma_t^2 = \omega + \left(\alpha + \gamma \cdot \mathbb{1}[\varepsilon_{t-1} < 0]\right) \varepsilon_{t-1}^2 + \beta \sigma_{t-1}^2$$
-
-$$\varepsilon_t / \sigma_t \sim t_\nu$$
-
-Wir verwenden die Standard-Implementation aus dem
-[`arch`-Package](https://arch.readthedocs.io/) (Sheppard 2024).
-Returns werden zur numerischen Stabilität in Prozent skaliert
-(×100), wie es die `arch`-Konvention vorsieht.
-
-Der `gamma`-Parameter trägt die asymmetrische Volatilitäts-
-Reaktion auf negative Returns. In Aktienmärkten ist `gamma` typisch
-positiv (Leverage-Effekt); bei Soft Commodities zeigen unsere
-Schätzungen oft den umgekehrten Effekt (siehe
-`results/<asset>_diagnostics.json` für die echten Werte pro
-Commodity).
-
-### 1.2 Pre-registrierte Spezifikation
-
-Wir verwenden für alle vier Commodities **dieselbe** Spezifikation:
-GJR-GARCH(1,1) mit Student-t-Innovationen, Constant-Mean,
-robusten Bollerslev-Wooldridge-Standardfehlern. Es findet **keine
-Spezifikations-Suche** statt — kein Hyperparameter-Tuning, keine
-Asset-spezifischen p/o/q-Variationen. Diese Disziplin ist bewusst:
-Spezifikations-Suchen über Walk-Forward-Backtests sind ein
-bekanntes Quelle von Look-Ahead-Bias und Daten-Snooping.
-
-### 1.3 Was die Spezifikation nicht ist
-
-- Kein **Markov-Switching-GARCH** (gehört zur nächsten
-  Forschungs-Stufe)
-- Kein **EVT-POT auf Residuen** (eigene Stufe)
-- Kein **GARCH-MIDAS** mit exogenen Niedrig-Frequenz-Faktoren
-  (Wetter, COT, ENSO)
-- Keine **Foundation-Modelle** für Volatilitäts-Targets
-
-Diese Schichten sind im myBytes-Forschungs-Programm vorgesehen
-und bekommen jeweils eigene Begleit-Repositories.
+Full description of the model specification, data preparation,
+walk-forward mechanics and evaluation discipline. This document is
+the companion to the repository code; the operational summary lives
+in the [README](../README.md).
 
 ---
 
-## 2 · Daten und Aufbereitung
+## 1 · Model specification
 
-### 2.1 Datenquelle
+### 1.1 GJR-GARCH(1,1) with Student-t innovations
 
-Tägliche Schluss-Preise für vier ICE Continuous Futures, abgerufen
-über `yfinance` (Yahoo Finance):
+Mean and volatility equations:
+
+```
+r_t = mu + eps_t
+
+sigma_t^2 = omega + (alpha + gamma * 1[eps_{t-1} < 0]) * eps_{t-1}^2 + beta * sigma_{t-1}^2
+
+eps_t / sigma_t ~ Student-t(nu)
+```
+
+We use the standard implementation from the
+[`arch` package](https://arch.readthedocs.io/) (Sheppard 2024). Returns
+are scaled to percent (×100) for numerical stability, following the
+`arch` convention.
+
+The `gamma` parameter captures the asymmetric volatility response to
+negative returns. In equity markets `gamma` is typically positive
+(leverage effect); in soft commodities our estimates often show the
+inverse effect — see `results/<asset>_diagnostics.json` for the
+empirical values per commodity.
+
+### 1.2 Pre-registered specification
+
+We use the **same** specification for all four commodities:
+GJR-GARCH(1,1) with Student-t innovations, constant mean,
+Bollerslev–Wooldridge robust standard errors. There is **no
+specification search** — no hyperparameter tuning, no per-asset p/o/q
+variations. This is a deliberate discipline. Specification searches
+over walk-forward backtests are a known source of look-ahead bias and
+data snooping.
+
+### 1.3 What the specification is not
+
+- Not Markov-switching GARCH (belongs to the next research stage)
+- Not EVT-POT on residuals (separate stage)
+- Not GARCH-MIDAS with exogenous low-frequency factors (weather, COT,
+  ENSO)
+- Not foundation models on volatility targets
+
+Each of these layers is planned in the myBytes research programme
+and will receive its own companion repository.
+
+---
+
+## 2 · Data and preparation
+
+### 2.1 Data source
+
+Daily closing prices for four ICE Continuous Futures, fetched via
+`yfinance` (Yahoo Finance):
 
 - `CC=F` — ICE Cocoa
 - `KC=F` — ICE Coffee (Arabica)
 - `SB=F` — ICE Sugar No. 11
 - `CT=F` — ICE Cotton No. 2
 
-Lizenz-Vorbehalt: Yahoo Finance Terms of Service verbieten
-Daten-Redistribution. Wir versenden Code, keine Daten. Details:
+License caveat: Yahoo Finance Terms of Service prohibit data
+redistribution. We ship code, not data. Details:
 [`LICENSES.md`](../LICENSES.md).
 
-### 2.2 Return-Berechnung
+### 2.2 Return calculation
 
-Logarithmische Returns, in Prozent skaliert:
+Logarithmic returns, scaled to percent:
 
-$$r_t = 100 \cdot \log(P_t / P_{t-1})$$
+```
+r_t = 100 * log(P_t / P_{t-1})
+```
 
-Fehlende Tage (Wochenende, Feiertage) werden weggelassen, nicht
-interpoliert.
+Missing days (weekends, holidays) are dropped, not interpolated.
 
-### 2.3 Trainings- und Test-Periode
+### 2.3 Training and test periods
 
-| Periode | Start | Ende |
+| Period | Start | End |
 |---|---|---|
 | Training | 2000-01-01 | 2018-12-28 |
 | Test     | 2019-01-01 | 2024-12-31 |
 
-Walk-Forward über die Test-Periode mit einem expandierenden
-Trainings-Fenster (Initial-Fenster ≈ 10 Jahre, Refit alle 21
-Handelstage). Vorhersage-Horizont: 1 Tag voraus.
+Walk-forward over the test period with an expanding training window
+(initial window ≈ 10 years, refit every 21 trading days). Forecast
+horizon: 1 day ahead.
 
 ---
 
 ## 3 · Evaluation
 
-### 3.1 VaR-Backtests
+### 3.1 VaR backtests
 
-Pro Walk-Forward-Fenster bewerten wir die bedingte 1-Tag-VaR
-gegen die tatsächlich beobachteten Returns:
+Per walk-forward window we evaluate the conditional 1-day VaR
+against the realised returns:
 
-- **Kupiec-POF** ([Kupiec 1995](https://doi.org/10.3905/jod.1995.407942))
-  prüft die Verletzungs-Häufigkeit gegen das nominelle Niveau
-- **Christoffersen-CC** ([Christoffersen 1998](https://doi.org/10.2307/2527341))
-  prüft zusätzlich die Unabhängigkeit der Verletzungen
-- Niveaus: 95 % und 99 %
+- **Kupiec POF** ([Kupiec 1995](https://doi.org/10.3905/jod.1995.407942))
+  tests violation frequency against the nominal level
+- **Christoffersen CC** ([Christoffersen 1998](https://doi.org/10.2307/2527341))
+  additionally tests independence of violations
+- Levels: 95 % and 99 %
 
-Wir berichten Verletzungs-Anteil, Teststatistik, p-Wert und
-Verworfen-Flag pro Test.
+We report violation share, test statistic, p-value and rejection
+flag per test.
 
-### 3.2 Pre-Crisis-Window-VaR-Coverage
+### 3.2 Pre-crisis-window VaR coverage
 
-**Eine eigene Disziplin neben der Aggregat-Coverage.** GARCH-
-Modelle passen sich nach einer Krise schnell an, sodass die
-Aggregat-VaR-Coverage gut aussehen kann, obwohl das Modell vor
-der Krise *nichts* gesehen hat. Wir bewerten deshalb separat ein
-**Pre-Crisis-Fenster** von etwa 126 Handelstagen vor jedem
-bekannten Stress-Event:
+**A separate discipline alongside aggregate coverage.** GARCH models
+adapt quickly after a crisis, so aggregate VaR coverage can look fine
+even though the model saw nothing *before* the crisis. We therefore
+evaluate a **pre-crisis window** of roughly 126 trading days before
+each known stress event, separately:
 
-| Commodity | Stress-Event | Fenster |
+| Commodity | Stress event | Window |
 |---|---|---|
-| Cocoa  | 2023/24 supply shock | 2022-09-01 → 2023-03-05 |
-| Coffee | 2024 Brazil drought  | 2023-09-02 → 2024-03-05 |
-| Sugar  | 2023 India export curb | 2023-04-01 → 2023-10-01 |
-| Cotton | 2022 supply shock    | 2022-02-01 → 2022-08-01 |
+| Cocoa  | 2023/24 supply shock     | 2022-09-01 → 2023-03-05 |
+| Coffee | 2024 Brazil drought      | 2023-09-02 → 2024-03-05 |
+| Sugar  | 2023 India export curb   | 2023-04-01 → 2023-10-01 |
+| Cotton | 2022 supply shock        | 2022-02-01 → 2022-08-01 |
 
-Auf diesen Fenstern wendet sich derselbe Kupiec-POF- und
-Christoffersen-CC-Test an. Die Ergebnisse liegen in
-`results/evaluation_<asset>.json` unter
+On these windows we apply the same Kupiec POF and Christoffersen CC
+tests. Results live in `results/evaluation_<asset>.json` under
 `pre_crisis_var_coverage`.
 
-### 3.3 Vorlaufzeit-Aussage
+### 3.3 Lead-time statement
 
-Für die im Begleit-Artikel hervorgehobene Aussage *„Vorlaufzeit
-gleich null"* messen wir, ob die bedingte Volatilitäts-Prognose
-in den 30 Handelstagen vor dem Spike-Tag signifikant über ihren
-60-Tage-Trend steigt. Bei GJR-GARCH allein ist die Antwort für
-die Cocoa-2023/24-Spike: nein, die Volatilität steigt erst *am*
-Spike-Tag. Das ist der erwartete Befund, weil GJR-GARCH keine
-Regime-Detektion enthält.
+For the lead-time statement highlighted in the companion article
+(*"zero lead time"*) we measure whether the conditional volatility
+forecast rises significantly above its 60-day trend in the 30 trading
+days before the spike day. For single-layer GJR-GARCH on the
+2023/24 cocoa spike the answer is no — volatility rises only *on*
+the spike day. This is the expected finding because GJR-GARCH carries
+no regime detection.
 
-### 3.4 R²_OOS gegen Squared-Returns
+### 3.4 R²_OOS against squared returns
 
-Wir berichten zusätzlich den Out-of-Sample-R² der bedingten
-Varianz-Prognose gegen die nachträglich beobachteten Squared-
-Returns. Werte zwischen −0,01 und +0,03 sind in der Volatilitäts-
-Forecasting-Literatur erwartbar und kein Modell-Mangel, sondern
-Folge der hohen Rausch-Komponente von Squared-Returns als
-Volatilitäts-Proxy
+We additionally report the out-of-sample R² of the conditional
+variance forecast against realised squared returns. Values between
+−0.01 and +0.03 are expected in the volatility forecasting literature
+and are not a model failure but a consequence of the high noise
+component of squared returns as a volatility proxy
 ([Andersen/Bollerslev 1998](https://www.jstor.org/stable/2527343)).
 
 ---
 
-## 4 · Reproduzierbarkeit
+## 4 · Reproducibility
 
-### 4.1 Snapshot-Pinning
+### 4.1 Snapshot pinning
 
-Reproduzierbarkeit verlangt einen festen Endstichtag der Yahoo-
-Daten. Wir pinnen diesen in `data_snapshot.json` und prüfen die
-frischen Fit-Parameter gegen `results/<asset>_diagnostics.json`
-innerhalb einer dokumentierten Toleranz.
+Reproducibility requires a fixed end-date for the Yahoo data. We pin
+this in `data_snapshot.json` and check the fresh fit parameters
+against `results/<asset>_diagnostics.json` within a documented
+tolerance.
 
-Toleranzen:
-- Parameter-Drift: 1 % relativ
-- Log-Likelihood-Drift: 0,5 % relativ
+Tolerances:
+- Parameter drift: 1 % relative
+- Log-likelihood drift: 0.5 % relative
 
-Die Toleranzen sind bewusst klein, aber nicht null. Yahoo
-korrigiert gelegentlich historische Schlusskurse rückwirkend, und
-arch-Optimierung kann je nach BLAS-Backend in der achten
-Nachkommastelle abweichen. Größere Drift ist ein echtes Signal,
-nicht Rauschen.
+Tolerances are deliberately small but non-zero. Yahoo occasionally
+revises historical closing prices retroactively, and arch optimisation
+can differ in the eighth decimal place depending on the BLAS backend.
+Larger drift is a genuine signal, not noise.
 
-### 4.2 Seed-Disziplin
+### 4.2 Seed discipline
 
-Alle stochastischen Komponenten (Numpy, Python `random`) sind auf
-Seed 42 gesetzt. Die GARCH-Optimierung selbst ist deterministisch
-für identische Daten und identische arch-Version.
+All stochastic components (NumPy, Python `random`) are seeded at 42.
+GARCH optimisation itself is deterministic for identical data and
+identical arch version.
 
-### 4.3 MLflow-Tracking
+### 4.3 MLflow tracking
 
-Pro Walk-Forward-Fenster wird ein MLflow-Run erzeugt, mit
-Konfigurations-Hash, Daten-Snapshot-Hash, allen Parametern, allen
-Metriken und den Forecast-Parquets als Artefakt. Default-Backend
-ist eine lokale SQLite-Datei (`mlflow.db`); Remote-Backends lassen
-sich über `MLFLOW_TRACKING_URI` setzen (siehe `.env.example`).
-
----
-
-## 5 · Truth-Check-Protokoll
-
-Diese Methodologie ist nach dem myBytes-Truth-Check-Protokoll
-dokumentiert (sieben Schritte: Claim-Extraktion, Klassifizierung,
-Anker-Mapping, Reproduzierbarkeit, Steel-Man, Limitations,
-unabhängiger Review). Der Status der sieben Schritte für die
-Begleit-Notiz steht im Frontmatter des Artikels.
-
-→ [Truth-Check-Protokoll](https://mybytes.com/research/truth-check-protocol)
+A MLflow run is created per walk-forward refit, with configuration
+hash, data snapshot hash, all parameters, all metrics and forecast
+Parquet files as artefacts. Default backend is a local SQLite file
+(`mlflow.db`); remote backends can be set via `MLFLOW_TRACKING_URI`
+(see `.env.example`).
 
 ---
 
-## 6 · Reading List
+## 5 · Truth-check protocol
 
-1. [Glosten, Jagannathan, Runkle 1993, *On the Relation between the Expected Value and the Volatility of the Nominal Excess Return on Stocks*](https://www.jstor.org/stable/2329067) — GJR-GARCH-Original
-2. [Bollerslev 1986, *Generalized Autoregressive Conditional Heteroskedasticity*](https://doi.org/10.1016/0304-4076(86)90063-1) — GARCH-Original
+This methodology is documented under the myBytes truth-check protocol
+(seven steps: claim extraction, classification, anchor mapping,
+reproducibility, steel-man, limitations, independent review). The
+status of the seven steps for the companion note is reported in the
+article's frontmatter.
+
+→ [Truth-check protocol (German)](https://mybytes.com/research/truth-check-protocol)
+
+---
+
+## 6 · Reading list
+
+1. [Glosten, Jagannathan, Runkle 1993, *On the Relation between the Expected Value and the Volatility of the Nominal Excess Return on Stocks*](https://www.jstor.org/stable/2329067) — GJR-GARCH original
+2. [Bollerslev 1986, *Generalized Autoregressive Conditional Heteroskedasticity*](https://doi.org/10.1016/0304-4076(86)90063-1) — GARCH original
 3. [Andersen/Bollerslev 1998, *Answering the Skeptics: Yes, Standard Volatility Models Do Provide Accurate Forecasts*](https://www.jstor.org/stable/2527343)
 4. [Kupiec 1995, *Techniques for Verifying the Accuracy of Risk Measurement Models*](https://doi.org/10.3905/jod.1995.407942)
 5. [Christoffersen 1998, *Evaluating Interval Forecasts*](https://doi.org/10.2307/2527341)
