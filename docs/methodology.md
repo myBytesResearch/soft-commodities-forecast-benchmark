@@ -43,15 +43,15 @@ are scaled to percent (×100) for numerical stability, following the
 The `gamma` parameter captures the asymmetric volatility response to
 negative returns. In equity markets `gamma` is typically positive
 (leverage effect); in soft commodities our estimates often show the
-inverse effect — see `results/<asset>_diagnostics.json` for the
+inverse effect - see `results/<asset>_diagnostics.json` for the
 empirical values per commodity.
 
 ### 1.2 Pre-registered specification
 
 We use the **same** specification for all four commodities:
 GJR-GARCH(1,1) with Student-t innovations, constant mean,
-Bollerslev–Wooldridge robust standard errors. There is **no
-specification search** — no hyperparameter tuning, no per-asset p/o/q
+Bollerslev-Wooldridge robust standard errors. There is **no
+specification search** - no hyperparameter tuning, no per-asset p/o/q
 variations. This is a deliberate discipline. Specification searches
 over walk-forward backtests are a known source of look-ahead bias and
 data snooping.
@@ -76,10 +76,10 @@ and will receive its own companion repository.
 Daily closing prices for four ICE Continuous Futures, fetched via
 `yfinance` (Yahoo Finance):
 
-- `CC=F` — ICE Cocoa
-- `KC=F` — ICE Coffee (Arabica)
-- `SB=F` — ICE Sugar No. 11
-- `CT=F` — ICE Cotton No. 2
+- `CC=F` - ICE Cocoa
+- `KC=F` - ICE Coffee (Arabica)
+- `SB=F` - ICE Sugar No. 11
+- `CT=F` - ICE Cotton No. 2
 
 License caveat: Yahoo Finance Terms of Service prohibit data
 redistribution. We ship code, not data. Details:
@@ -149,7 +149,7 @@ For the lead-time statement highlighted in the companion article
 (*"zero lead time"*) we measure whether the conditional volatility
 forecast rises significantly above its 60-day trend in the 30 trading
 days before the spike day. For single-layer GJR-GARCH on the
-2023/24 cocoa spike the answer is no — volatility rises only *on*
+2023/24 cocoa spike the answer is no - volatility rises only *on*
 the spike day. This is the expected finding because GJR-GARCH carries
 no regime detection.
 
@@ -212,8 +212,8 @@ article's frontmatter.
 
 ## 6 · Reading list
 
-1. [Glosten, Jagannathan, Runkle 1993, *On the Relation between the Expected Value and the Volatility of the Nominal Excess Return on Stocks*](https://www.jstor.org/stable/2329067) — GJR-GARCH original
-2. [Bollerslev 1986, *Generalized Autoregressive Conditional Heteroskedasticity*](https://doi.org/10.1016/0304-4076(86)90063-1) — GARCH original
+1. [Glosten, Jagannathan, Runkle 1993, *On the Relation between the Expected Value and the Volatility of the Nominal Excess Return on Stocks*](https://www.jstor.org/stable/2329067) - GJR-GARCH original
+2. [Bollerslev 1986, *Generalized Autoregressive Conditional Heteroskedasticity*](https://doi.org/10.1016/0304-4076(86)90063-1) - GARCH original
 3. [Andersen/Bollerslev 1998, *Answering the Skeptics: Yes, Standard Volatility Models Do Provide Accurate Forecasts*](https://www.jstor.org/stable/2527343)
 4. [Kupiec 1995, *Techniques for Verifying the Accuracy of Risk Measurement Models*](https://doi.org/10.3905/jod.1995.407942)
 5. [Christoffersen 1998, *Evaluating Interval Forecasts*](https://doi.org/10.2307/2527341)

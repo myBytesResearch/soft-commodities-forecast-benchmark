@@ -1,4 +1,4 @@
-# Licenses — Code, Data, Models, Libraries
+# Licenses - Code, Data, Models, Libraries
 
 This repository ships **code only**. Data is fetched at runtime from
 Yahoo Finance via `yfinance`. Reading this file is part of the

@@ -44,7 +44,7 @@ the linked methodology article.
 - All per-commodity model parameters cited in the article (mean, omega,
   alpha, gamma, beta, nu) under identical walk-forward split mechanics
 - All VaR backtests (Kupiec-POF, Christoffersen-CC) on the aggregate
-  test period 2019–2024
+  test period 2019-2024
 - Pre-crisis-window VaR coverage as a separate discipline (aggregate
   coverage measures backward-looking adaptation; the pre-crisis
   window measures what was visible *before* the stress event)
@@ -74,7 +74,7 @@ Three points explicitly:
    code is pinned to a fixed snapshot end-date so reproduction stays
    deterministic. License details: [`LICENSES.md`](LICENSES.md).
 2. **No follow-on layers.** HMM regime detection, GARCH-MIDAS with
-   weather and COT data, foundation models for volatility targets —
+   weather and COT data, foundation models for volatility targets -
    all of these are planned in the myBytes research programme, none
    of them belong in this baseline repository. When those layers are
    built, they will land in their own companion repositories.

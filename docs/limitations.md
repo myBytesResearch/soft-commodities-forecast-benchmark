@@ -36,7 +36,7 @@ research stage.
 The event windows were chosen manually from market history. We know
 *now* that the 2023/24 cocoa spike occurred; a model that should have
 detected it *then* would not have known the date. This asymmetry is
-deliberate in the procedure — the lead-time statement is a
+deliberate in the procedure - the lead-time statement is a
 **conditional-on-event** finding, not a real-time out-of-sample
 detection.
 
@@ -80,13 +80,13 @@ BLAS configuration is required.
 ## 7 · What this document does not cover
 
 - Comparison against alternative volatility models (EGARCH, FIGARCH,
-  Realized GARCH, MS-GARCH, HMM, GARCH-MIDAS) — material for the
+  Realized GARCH, MS-GARCH, HMM, GARCH-MIDAS) - material for the
   next research stages
-- Cross-correlations between the four commodities — a separate
+- Cross-correlations between the four commodities - a separate
   research topic
-- Options-market validation against implied volatility — see the
+- Options-market validation against implied volatility - see the
   forthcoming realised-versus-implied volatility note for procurement
-- Application to procurement hedging — methodological material, not
+- Application to procurement hedging - methodological material, not
   an operational hedging recommendation
 
 ---
