@@ -531,7 +531,7 @@ def _log_to_mlflow(report: dict) -> None:
 # ==============================================================================
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate GJR-GARCH-t forecasts.")
-    parser.add_argument("--config", type=str, default="models/01_gjr_garch_t/config.yaml")
+    parser.add_argument("--config", type=str, default="configs/base.yaml")
     parser.add_argument("--global-config", type=str, default="configs/global.yaml")
     parser.add_argument("--asset", type=str, default=None)
     args = parser.parse_args()

@@ -1,0 +1,21 @@
+# =========================================================================
+#  myBytes.com - Copyright (c) 2026 myBytes GmbH. All rights reserved.
+#  File: hmm.yaml | Project: soft-commodities-forecast-benchmark
+# =========================================================================
+# Layer 2 - Gaussian HMM regime model (model 17).
+# PRE-REGISTERED before any run; do not change based on results.
+
+model:
+  name: "gaussian_hmm_k3"
+  family: "hmm"
+  description: "Gaussian HMM, 3 regimes, diagonal covariance, filtered posterior"
+  n_states: 3
+
+data:
+  return_method: "log"
+
+# Detection mechanics: see configs/global.yaml
+#   hmm_signal.primary = logit_posterior (ratio-vs-EMA, FPR-calibrated)
+#   hmm_signal.sensitivity = posterior_crisis (fixed threshold)
+# Endpoint: ema_lambda094 / sensitive (10% FPR) / 180d / pooled -
+# identical to layer 1.

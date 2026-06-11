@@ -200,7 +200,7 @@ def main() -> None:
     parser.add_argument(
         "--config",
         type=str,
-        default="models/01_gjr_garch_t/config.yaml",
+        default="configs/base.yaml",
         help="Modell-Config-YAML.",
     )
     parser.add_argument(

@@ -1,0 +1,135 @@
+# =========================================================================
+#                     ____        __
+#    ____ ___  __  __/ __ )__  __/ /____  _____
+#   / __ `__ \/ / / / __  / / / / __/ _ \/ ___/
+#  / / / / / / /_/ / /_/ / /_/ / /_/  __(__  )
+# /_/ /_/ /_/\__, /_____/\__, /\__/\___/____/
+#           /____/      /____/
+#
+#  myBytes.com
+#  Copyright (c) 2026 myBytes GmbH. All rights reserved.
+#
+#  File: global.yaml | Project: soft-commodities-forecast-benchmark
+# =========================================================================
+#
+# Global evaluation configuration shared by all models and assets.
+#
+# PRE-REGISTRATION NOTE. The detection endpoint, baselines, operating
+# points and signal mechanics below were fixed BEFORE the layer-2
+# (regime model) runs and must not be changed based on results.
+# The sugar and cotton crisis events were added on 2026-06-11 - i.e.
+# AFTER the layer-1 (GARCH) publication but BEFORE any layer-1
+# evaluation had been run for these two assets and BEFORE any layer-2
+# model existed. Their start dates follow the same convention as the
+# two original events (first day of the month in which the significant
+# move began, anchored in public reporting), not the day of the
+# largest absolute return.
+
+splits:
+  train_start: "2000-01-01"
+  train_end:   "2018-12-31"
+  val_start:   "2019-01-01"
+  val_end:     "2020-12-31"
+  test_start:  "2021-01-01"
+  test_end:    "2024-12-31"   # snapshot end (data_snapshot.json)
+
+backtest:
+  window_type: "expanding"
+  initial_window_days: 2520
+  refit_frequency_days: 21
+  forecast_horizon_days: 1
+
+mlflow:
+  default_mode: "local"
+  tracking_uri_local: "sqlite:///experiments/mlflow.db"
+  tracking_uri_remote: "sqlite:///experiments/mlflow.db"
+  experiment_prefix: "benchmark"
+  default_tags:
+    project: "soft-commodities-forecast-benchmark"
+    repo: "github.com/myBytesResearch/soft-commodities-forecast-benchmark"
+
+metrics:
+  volatility_forecast:
+    - "qlike"
+    - "mse"
+    - "mae"
+    - "r2_oos"
+    - "r2_oos_vs_har_rv"
+  rolling_mean_benchmark_window: 5
+
+  var_backtest:
+    confidence_levels: [0.95, 0.99]
+    tests:
+      - "kupiec_pof"
+      - "christoffersen_cc"
+
+  black_swan_detection:
+    crisis_events:
+      - name: "cocoa_2023_2024_supply_shock"
+        asset: "cocoa"
+        start_date: "2023-09-01"   # onset of the significant move
+        peak_date: "2024-04-19"    # all-time high ~ USD 12,000/t
+        anchor: "ICCO supply deficit reporting 2023-09 onwards; ATH Apr 2024"
+      - name: "coffee_2024_brazil_drought"
+        asset: "coffee"
+        start_date: "2024-09-01"
+        peak_date: "2024-12-10"
+        anchor: "worst Brazil drought in seven decades, Aug/Sep 2024 reporting"
+      - name: "sugar_2023_india_export_curb"
+        asset: "sugar"
+        start_date: "2023-09-01"   # acceleration into the Oct restrictions
+        peak_date: "2023-11-02"    # 12-year high NY No. 11
+        anchor: "India export restriction reporting Sep/Oct 2023; 12y high 2023-11"
+      - name: "cotton_2022_supply_shock"
+        asset: "cotton"
+        start_date: "2022-05-01"   # post-peak collapse phase begins
+        peak_date: "2022-06-24"    # largest single-day move of the episode (-27%)
+        anchor: "ICE Cotton No.2 peak ~155 USc early May 2022, historic May-Jul collapse"
+
+    lead_time_lookback_windows_days: [30, 90, 180]
+    pre_crisis_var_window_days: [180, 365]
+
+    threshold_calibration:
+      method: "fpr_constrained"
+      operating_points:
+        - name: "conservative"
+          target_fpr: 0.05
+        - name: "sensitive"
+          target_fpr: 0.10
+      baselines:
+        - name: "median_252d"
+          statistic: "median"
+          window_days: 252
+        - name: "ema_lambda094"
+          statistic: "ema"
+          window_days: 252
+          ema_lambda: 0.94
+      signal: "conditional_vol"
+      pool:
+        enabled: true
+        pool_assets: ["cocoa", "coffee", "sugar", "cotton"]
+
+    # Exactly ONE primary endpoint; all other combinations are
+    # secondary / exploratory and must be flagged as such in reports.
+    pre_registered_endpoint:
+      primary:
+        baseline: "ema_lambda094"
+        operating_point: "sensitive"   # target FPR 10 %
+        lookback_days: 180
+        calibration: "pooled"
+        rationale: >-
+          Fixed before layer-2 modelling. Sensitive (10 % FPR) is the
+          risk-manager operating point; conservative is reported as
+          secondary. Choice must not be changed based on results.
+      signal_mechanics:
+        vol_like:
+          method: "ratio_multiplier"
+          applies_to: ["cond_vol", "tail_prob"]
+        probability:
+          method: "ratio_multiplier_on_logit"
+          fallback_method: "fixed_threshold"   # sensitivity reporting only
+          applies_to: ["posterior_crisis", "state_mass_crisis"]
+
+    hmm_signal:
+      primary: "logit_posterior"
+      sensitivity: "posterior_crisis"

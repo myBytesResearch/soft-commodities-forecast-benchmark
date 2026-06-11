@@ -1,113 +1,113 @@
 {
-  "asset": "cocoa",
+  "asset": "cotton",
   "splits": {
     "val": {
       "n_obs": 504,
       "vol_metrics": {
-        "qlike": 1.241924135484197,
-        "mse": 61.524070301691516,
-        "mae": 3.5121658026448754,
-        "r2_oos": -0.00501025087173268,
-        "r2_oos_vs_har_rv": 0.15951515491484936
+        "qlike": 1.4533015125616275,
+        "mse": 15.31844337074062,
+        "mae": 2.477563689157854,
+        "r2_oos": 0.037711449844381906,
+        "r2_oos_vs_har_rv": 0.13514851194871558
       },
       "var_backtests": {
         "var_95": {
           "kupiec_pof": {
             "test_name": "kupiec_pof",
-            "statistic": 1.2118023372281925,
-            "pvalue": 0.2709754671601615,
-            "n_violations": 20,
+            "statistic": 0.06107712926100817,
+            "pvalue": 0.8048015226378464,
+            "n_violations": 24,
             "n_observations": 504,
             "expected_violations": 25.200000000000024,
-            "violation_rate": 0.03968253968253968,
+            "violation_rate": 0.047619047619047616,
             "rejected": false
           },
           "christoffersen_cc": {
             "test_name": "christoffersen_cc",
-            "statistic": 2.6488992034811236,
-            "pvalue": 0.26594929684329105,
-            "n_violations": 20,
+            "statistic": 0.6482197919569135,
+            "pvalue": 0.7231707644540193,
+            "n_violations": 24,
             "n_observations": 504,
             "expected_violations": 25.200000000000024,
-            "violation_rate": 0.03968253968253968,
+            "violation_rate": 0.047619047619047616,
             "rejected": false
           }
         },
         "var_99": {
           "kupiec_pof": {
             "test_name": "kupiec_pof",
-            "statistic": 0.174088873295986,
-            "pvalue": 0.6765031719187291,
-            "n_violations": 6,
+            "statistic": 0.00032151009245495743,
+            "pvalue": 0.9856941358880273,
+            "n_violations": 5,
             "n_observations": 504,
             "expected_violations": 5.0400000000000045,
-            "violation_rate": 0.011904761904761904,
+            "violation_rate": 0.00992063492063492,
             "rejected": false
           },
           "christoffersen_cc": {
             "test_name": "christoffersen_cc",
-            "statistic": 3.9004161291756843,
-            "pvalue": 0.14224447246981908,
-            "n_violations": 6,
+            "statistic": 0.00032151009245495743,
+            "pvalue": 0.9998392578741726,
+            "n_violations": 5,
             "n_observations": 504,
             "expected_violations": 5.0400000000000045,
-            "violation_rate": 0.011904761904761904,
+            "violation_rate": 0.00992063492063492,
             "rejected": false
           }
         }
       }
     },
     "test": {
-      "n_obs": 1005,
+      "n_obs": 1006,
       "vol_metrics": {
-        "qlike": 1.438960901615462,
-        "mse": 882.9733747294763,
-        "mae": 7.584794558324167,
-        "r2_oos": 0.061529716860964534,
-        "r2_oos_vs_har_rv": 0.1350202416837144
+        "qlike": 1.5930882229256622,
+        "mse": 584.396300214366,
+        "mae": 4.748929769071552,
+        "r2_oos": -0.015577271423512284,
+        "r2_oos_vs_har_rv": 0.15067093014875887
       },
       "var_backtests": {
         "var_95": {
           "kupiec_pof": {
             "test_name": "kupiec_pof",
-            "statistic": 0.011728063881434991,
-            "pvalue": 0.9137607480312185,
-            "n_violations": 51,
-            "n_observations": 1005,
-            "expected_violations": 50.25000000000004,
-            "violation_rate": 0.050746268656716415,
+            "statistic": 0.00188699420436933,
+            "pvalue": 0.9653511538515848,
+            "n_violations": 50,
+            "n_observations": 1006,
+            "expected_violations": 50.30000000000005,
+            "violation_rate": 0.04970178926441352,
             "rejected": false
           },
           "christoffersen_cc": {
             "test_name": "christoffersen_cc",
-            "statistic": 0.7531917239915735,
-            "pvalue": 0.6861933346712168,
-            "n_violations": 51,
-            "n_observations": 1005,
-            "expected_violations": 50.25000000000004,
-            "violation_rate": 0.050746268656716415,
+            "statistic": 0.11462178888224983,
+            "pvalue": 0.9443004459665442,
+            "n_violations": 50,
+            "n_observations": 1006,
+            "expected_violations": 50.30000000000005,
+            "violation_rate": 0.04970178926441352,
             "rejected": false
           }
         },
         "var_99": {
           "kupiec_pof": {
             "test_name": "kupiec_pof",
-            "statistic": 0.8005501249408553,
-            "pvalue": 0.37092894210054306,
-            "n_violations": 13,
-            "n_observations": 1005,
-            "expected_violations": 10.05000000000001,
-            "violation_rate": 0.012935323383084577,
+            "statistic": 0.45824799667259697,
+            "pvalue": 0.4984439144678716,
+            "n_violations": 8,
+            "n_observations": 1006,
+            "expected_violations": 10.06000000000001,
+            "violation_rate": 0.007952286282306162,
             "rejected": false
           },
           "christoffersen_cc": {
             "test_name": "christoffersen_cc",
-            "statistic": 0.8005501249408553,
-            "pvalue": 0.6701356915034685,
-            "n_violations": 13,
-            "n_observations": 1005,
-            "expected_violations": 10.05000000000001,
-            "violation_rate": 0.012935323383084577,
+            "statistic": 4.324388814637834,
+            "pvalue": 0.11507232821505409,
+            "n_violations": 8,
+            "n_observations": 1006,
+            "expected_violations": 10.06000000000001,
+            "violation_rate": 0.007952286282306162,
             "rejected": false
           }
         }
@@ -115,52 +115,52 @@
     }
   },
   "pre_crisis_var_coverage": {
-    "cocoa_2023_2024_supply_shock": {
-      "window_start": "2022-09-01",
-      "window_end": "2023-03-05",
-      "n_obs": 126,
+    "cotton_2022_supply_shock": {
+      "window_start": "2021-05-01",
+      "window_end": "2021-11-02",
+      "n_obs": 128,
       "backtests": {
         "var_95": {
           "kupiec_pof": {
             "test_name": "kupiec_pof",
-            "statistic": 1.0098712710955269,
-            "pvalue": 0.3149336804452011,
-            "n_violations": 4,
-            "n_observations": 126,
-            "expected_violations": 6.300000000000006,
-            "violation_rate": 0.031746031746031744,
+            "statistic": 0.026852095439480195,
+            "pvalue": 0.8698365624899651,
+            "n_violations": 6,
+            "n_observations": 128,
+            "expected_violations": 6.400000000000006,
+            "violation_rate": 0.046875,
             "rejected": false
           },
           "christoffersen_cc": {
             "test_name": "christoffersen_cc",
-            "statistic": 1.0098712710955269,
-            "pvalue": 0.6035444209829477,
-            "n_violations": 4,
-            "n_observations": 126,
-            "expected_violations": 6.300000000000006,
-            "violation_rate": 0.031746031746031744,
+            "statistic": 0.026852095439480195,
+            "pvalue": 0.9866636796487567,
+            "n_violations": 6,
+            "n_observations": 128,
+            "expected_violations": 6.400000000000006,
+            "violation_rate": 0.046875,
             "rejected": false
           }
         },
         "var_99": {
           "kupiec_pof": {
             "test_name": "kupiec_pof",
-            "statistic": NaN,
-            "pvalue": NaN,
-            "n_violations": 0,
-            "n_observations": 126,
-            "expected_violations": 1.2600000000000011,
-            "violation_rate": 0.0,
+            "statistic": 0.34924708962497064,
+            "pvalue": 0.5545396440817862,
+            "n_violations": 2,
+            "n_observations": 128,
+            "expected_violations": 1.2800000000000011,
+            "violation_rate": 0.015625,
             "rejected": false
           },
           "christoffersen_cc": {
             "test_name": "christoffersen_cc",
-            "statistic": 0.0,
-            "pvalue": 1.0,
-            "n_violations": 0,
-            "n_observations": 126,
-            "expected_violations": 1.2600000000000011,
-            "violation_rate": 0.0,
+            "statistic": 0.34924708962497064,
+            "pvalue": 0.8397730982101349,
+            "n_violations": 2,
+            "n_observations": 128,
+            "expected_violations": 1.2800000000000011,
+            "violation_rate": 0.015625,
             "rejected": false
           }
         }
@@ -190,37 +190,37 @@
       "median_252d": {
         "conservative": {
           "calibration": {
-            "multiplier": 1.3,
-            "realised_fpr": 0.033936651583710405,
+            "multiplier": 1.4,
+            "realised_fpr": 0.042986425339366516,
             "target_fpr": 0.05,
             "baseline_window": 252,
             "baseline_statistic": "median",
             "ema_lambda": null,
             "n_eval": 442,
-            "ratio_min": 0.858389036978359,
-            "ratio_median": 1.0060153438090635,
-            "ratio_max": 1.3763931266538179
+            "ratio_min": 0.7400327658979177,
+            "ratio_median": 0.9933411555272462,
+            "ratio_max": 1.5369634092199966
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.3,
+                  "threshold_multiplier": 1.4,
                   "lookback_days": 30,
                   "detection_date": null,
                   "note": "no detection in lookback window"
                 },
                 "90d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.3,
+                  "threshold_multiplier": 1.4,
                   "lookback_days": 90,
                   "detection_date": null,
                   "note": "no detection in lookback window"
                 },
                 "180d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.3,
+                  "threshold_multiplier": 1.4,
                   "lookback_days": 180,
                   "detection_date": null,
                   "note": "no detection in lookback window"
@@ -231,37 +231,37 @@
         },
         "sensitive": {
           "calibration": {
-            "multiplier": 1.25,
-            "realised_fpr": 0.08144796380090498,
+            "multiplier": 1.35,
+            "realised_fpr": 0.0746606334841629,
             "target_fpr": 0.1,
             "baseline_window": 252,
             "baseline_statistic": "median",
             "ema_lambda": null,
             "n_eval": 442,
-            "ratio_min": 0.858389036978359,
-            "ratio_median": 1.0060153438090635,
-            "ratio_max": 1.3763931266538179
+            "ratio_min": 0.7400327658979177,
+            "ratio_median": 0.9933411555272462,
+            "ratio_max": 1.5369634092199966
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.25,
+                  "threshold_multiplier": 1.35,
                   "lookback_days": 30,
                   "detection_date": null,
                   "note": "no detection in lookback window"
                 },
                 "90d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.25,
+                  "threshold_multiplier": 1.35,
                   "lookback_days": 90,
                   "detection_date": null,
                   "note": "no detection in lookback window"
                 },
                 "180d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.25,
+                  "threshold_multiplier": 1.35,
                   "lookback_days": 180,
                   "detection_date": null,
                   "note": "no detection in lookback window"
@@ -274,37 +274,37 @@
       "ema_lambda094": {
         "conservative": {
           "calibration": {
-            "multiplier": 1.15,
-            "realised_fpr": 0.027149321266968326,
+            "multiplier": 1.2,
+            "realised_fpr": 0.038461538461538464,
             "target_fpr": 0.05,
             "baseline_window": 252,
             "baseline_statistic": "ema",
             "ema_lambda": 0.94,
             "n_eval": 442,
-            "ratio_min": 0.9229072520046736,
-            "ratio_median": 0.9938604148271453,
-            "ratio_max": 1.3389332458622256
+            "ratio_min": 0.8591531437210082,
+            "ratio_median": 0.9806068224656919,
+            "ratio_max": 1.2986633022807772
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.15,
+                  "threshold_multiplier": 1.2,
                   "lookback_days": 30,
                   "detection_date": null,
                   "note": "no detection in lookback window"
                 },
                 "90d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.15,
+                  "threshold_multiplier": 1.2,
                   "lookback_days": 90,
                   "detection_date": null,
                   "note": "no detection in lookback window"
                 },
                 "180d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.15,
+                  "threshold_multiplier": 1.2,
                   "lookback_days": 180,
                   "detection_date": null,
                   "note": "no detection in lookback window"
@@ -315,42 +315,44 @@
         },
         "sensitive": {
           "calibration": {
-            "multiplier": 1.1,
-            "realised_fpr": 0.05429864253393665,
+            "multiplier": 1.15,
+            "realised_fpr": 0.07239819004524888,
             "target_fpr": 0.1,
             "baseline_window": 252,
             "baseline_statistic": "ema",
             "ema_lambda": 0.94,
             "n_eval": 442,
-            "ratio_min": 0.9229072520046736,
-            "ratio_median": 0.9938604148271453,
-            "ratio_max": 1.3389332458622256
+            "ratio_min": 0.8591531437210082,
+            "ratio_median": 0.9806068224656919,
+            "ratio_max": 1.2986633022807772
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
-                  "threshold_multiplier": 1.1,
+                  "threshold_multiplier": 1.15,
                   "lookback_days": 30,
                   "detection_date": null,
                   "note": "no detection in lookback window"
                 },
                 "90d": {
-                  "lead_time_days": 0,
-                  "threshold_multiplier": 1.1,
+                  "lead_time_days": 50,
+                  "threshold_multiplier": 1.15,
                   "lookback_days": 90,
-                  "detection_date": null,
-                  "note": "no detection in lookback window"
+                  "detection_date": "2022-03-11",
+                  "signal_at_detection": 1.8932465094885391,
+                  "baseline_at_detection": 1.6169506676280327,
+                  "ratio_at_detection": 1.1708746267848824
                 },
                 "180d": {
-                  "lead_time_days": 106,
-                  "threshold_multiplier": 1.1,
+                  "lead_time_days": 50,
+                  "threshold_multiplier": 1.15,
                   "lookback_days": 180,
-                  "detection_date": "2023-05-17",
-                  "signal_at_detection": 1.6571910829748644,
-                  "baseline_at_detection": 1.461535158842858,
-                  "ratio_at_detection": 1.1338701453387636
+                  "detection_date": "2022-03-11",
+                  "signal_at_detection": 1.8932465094885391,
+                  "baseline_at_detection": 1.6169506676280327,
+                  "ratio_at_detection": 1.1708746267848824
                 }
               }
             }
@@ -363,10 +365,10 @@
       "baseline_b": "ema_lambda094",
       "comparisons": {
         "conservative": {
-          "multiplier_a": 1.3,
-          "multiplier_b": 1.15,
+          "multiplier_a": 1.4,
+          "multiplier_b": 1.2,
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "30d": {
                 "lead_a": 0,
                 "lead_b": 0,
@@ -386,10 +388,10 @@
           }
         },
         "sensitive": {
-          "multiplier_a": 1.25,
-          "multiplier_b": 1.1,
+          "multiplier_a": 1.35,
+          "multiplier_b": 1.15,
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "30d": {
                 "lead_a": 0,
                 "lead_b": 0,
@@ -397,13 +399,13 @@
               },
               "90d": {
                 "lead_a": 0,
-                "lead_b": 0,
-                "delta_days": 0.0
+                "lead_b": 50,
+                "delta_days": -50.0
               },
               "180d": {
                 "lead_a": 0,
-                "lead_b": 106,
-                "delta_days": -106.0
+                "lead_b": 50,
+                "delta_days": -50.0
               }
             }
           }
@@ -445,7 +447,7 @@
             "ratio_max": 1.8077752497434705
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
@@ -498,7 +500,7 @@
             "ratio_max": 1.8077752497434705
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
@@ -553,7 +555,7 @@
             "ratio_max": 1.3846354979494446
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
@@ -606,7 +608,7 @@
             "ratio_max": 1.3846354979494446
           },
           "events": {
-            "cocoa_2023_2024_supply_shock": {
+            "cotton_2022_supply_shock": {
               "lookback_windows": {
                 "30d": {
                   "lead_time_days": 0,
@@ -616,18 +618,22 @@
                   "note": "no detection in lookback window"
                 },
                 "90d": {
-                  "lead_time_days": 0,
+                  "lead_time_days": 50,
                   "threshold_multiplier": 1.15,
                   "lookback_days": 90,
-                  "detection_date": null,
-                  "note": "no detection in lookback window"
+                  "detection_date": "2022-03-11",
+                  "signal_at_detection": 1.8932465094885391,
+                  "baseline_at_detection": 1.6169506676280327,
+                  "ratio_at_detection": 1.1708746267848824
                 },
                 "180d": {
-                  "lead_time_days": 0,
+                  "lead_time_days": 50,
                   "threshold_multiplier": 1.15,
                   "lookback_days": 180,
-                  "detection_date": null,
-                  "note": "no detection in lookback window"
+                  "detection_date": "2022-03-11",
+                  "signal_at_detection": 1.8932465094885391,
+                  "baseline_at_detection": 1.6169506676280327,
+                  "ratio_at_detection": 1.1708746267848824
                 }
               }
             }
@@ -638,30 +644,30 @@
     "pool_vs_single_multiplier": {
       "median_252d": {
         "conservative": {
-          "multiplier_single": 1.3,
+          "multiplier_single": 1.4,
           "multiplier_pooled": 1.4,
-          "delta_abs": 0.09999999999999987,
-          "delta_pct": 7.692307692307681
+          "delta_abs": 0.0,
+          "delta_pct": 0.0
         },
         "sensitive": {
-          "multiplier_single": 1.25,
+          "multiplier_single": 1.35,
           "multiplier_pooled": 1.35,
-          "delta_abs": 0.10000000000000009,
-          "delta_pct": 8.000000000000007
+          "delta_abs": 0.0,
+          "delta_pct": 0.0
         }
       },
       "ema_lambda094": {
         "conservative": {
-          "multiplier_single": 1.15,
+          "multiplier_single": 1.2,
           "multiplier_pooled": 1.2,
-          "delta_abs": 0.050000000000000044,
-          "delta_pct": 4.347826086956526
+          "delta_abs": 0.0,
+          "delta_pct": 0.0
         },
         "sensitive": {
-          "multiplier_single": 1.1,
+          "multiplier_single": 1.15,
           "multiplier_pooled": 1.15,
-          "delta_abs": 0.04999999999999982,
-          "delta_pct": 4.545454545454529
+          "delta_abs": 0.0,
+          "delta_pct": 0.0
         }
       }
     }

@@ -1,0 +1,758 @@
+{
+  "model": "gaussian_hmm_k3",
+  "signal": "posterior_stress (odds-space, ratio_multiplier_on_logit)",
+  "endpoint_note": "Primary: ema_lambda094 / sensitive (10% FPR) / 180d / pooled - identical to layer 1. Secondary combinations flagged exploratory.",
+  "timestamp": "2026-06-11T18:13:27",
+  "by_calibration": {
+    "pooled": {
+      "conservative": {
+        "calibration": {
+          "multiplier": 2.75,
+          "realised_fpr": 0.04909706546275395,
+          "target_fpr": 0.05,
+          "baseline_window": 252,
+          "baseline_statistic": "ema",
+          "ema_lambda": 0.94,
+          "n_eval_total": 1772,
+          "n_eval_per_asset": {
+            "cocoa": 443,
+            "coffee": 443,
+            "sugar": 443,
+            "cotton": 443
+          },
+          "pool_assets": [
+            "cocoa",
+            "coffee",
+            "cotton",
+            "sugar"
+          ],
+          "ratio_min": 1.2280838014878974e-05,
+          "ratio_median": 0.3473157891671323,
+          "ratio_max": 16.666304210033385
+        },
+        "events": {
+          "cocoa_2023_2024_supply_shock": {
+            "asset": "cocoa",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 23,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 30,
+                "detection_date": "2023-08-08",
+                "signal_at_detection": 0.534103714360748,
+                "baseline_at_detection": 0.12896954897243995,
+                "ratio_at_detection": 4.141316447302478
+              },
+              "90d": {
+                "lead_time_days": 23,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 90,
+                "detection_date": "2023-08-08",
+                "signal_at_detection": 0.534103714360748,
+                "baseline_at_detection": 0.12896954897243995,
+                "ratio_at_detection": 4.141316447302478
+              },
+              "180d": {
+                "lead_time_days": 168,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 180,
+                "detection_date": "2023-03-16",
+                "signal_at_detection": 0.17103787897076678,
+                "baseline_at_detection": 0.0470038946332786,
+                "ratio_at_detection": 3.6388022802194038
+              }
+            },
+            "multiplier": 2.75
+          },
+          "coffee_2024_brazil_drought": {
+            "asset": "coffee",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 24,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 30,
+                "detection_date": "2024-08-07",
+                "signal_at_detection": 1.9748383394747135,
+                "baseline_at_detection": 0.2980992471917805,
+                "ratio_at_detection": 6.624767952547738
+              },
+              "90d": {
+                "lead_time_days": 53,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 90,
+                "detection_date": "2024-07-09",
+                "signal_at_detection": 2.191968046931645,
+                "baseline_at_detection": 0.2852449255949788,
+                "ratio_at_detection": 7.684511976363902
+              },
+              "180d": {
+                "lead_time_days": 136,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 180,
+                "detection_date": "2024-04-17",
+                "signal_at_detection": 0.7118609625468567,
+                "baseline_at_detection": 0.10589934635701483,
+                "ratio_at_detection": 6.722052468076472
+              }
+            },
+            "multiplier": 2.75
+          },
+          "sugar_2023_india_export_curb": {
+            "asset": "sugar",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 0,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 30,
+                "detection_date": null,
+                "note": "no detection in lookback window"
+              },
+              "90d": {
+                "lead_time_days": 70,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 90,
+                "detection_date": "2023-06-22",
+                "signal_at_detection": 0.3643031364495532,
+                "baseline_at_detection": 0.08490887945731855,
+                "ratio_at_detection": 4.29051871580379
+              },
+              "180d": {
+                "lead_time_days": 122,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 180,
+                "detection_date": "2023-05-01",
+                "signal_at_detection": 1.8104072996685892,
+                "baseline_at_detection": 0.2784302471902069,
+                "ratio_at_detection": 6.502193342635748
+              }
+            },
+            "multiplier": 2.75
+          },
+          "cotton_2022_supply_shock": {
+            "asset": "cotton",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 11,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 30,
+                "detection_date": "2022-04-19",
+                "signal_at_detection": 1.444222490516095,
+                "baseline_at_detection": 0.4819922291973582,
+                "ratio_at_detection": 2.996360528303743
+              },
+              "90d": {
+                "lead_time_days": 57,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 90,
+                "detection_date": "2022-03-04",
+                "signal_at_detection": 0.4839065681171546,
+                "baseline_at_detection": 0.12006428041071397,
+                "ratio_at_detection": 4.0303957718466705
+              },
+              "180d": {
+                "lead_time_days": 179,
+                "threshold_multiplier": 2.75,
+                "lookback_days": 180,
+                "detection_date": "2021-11-02",
+                "signal_at_detection": 9.532288429103925,
+                "baseline_at_detection": 3.153522486992667,
+                "ratio_at_detection": 3.022743128809689
+              }
+            },
+            "multiplier": 2.75
+          }
+        }
+      },
+      "sensitive": {
+        "calibration": {
+          "multiplier": 1.65,
+          "realised_fpr": 0.09875846501128668,
+          "target_fpr": 0.1,
+          "baseline_window": 252,
+          "baseline_statistic": "ema",
+          "ema_lambda": 0.94,
+          "n_eval_total": 1772,
+          "n_eval_per_asset": {
+            "cocoa": 443,
+            "coffee": 443,
+            "sugar": 443,
+            "cotton": 443
+          },
+          "pool_assets": [
+            "cocoa",
+            "coffee",
+            "cotton",
+            "sugar"
+          ],
+          "ratio_min": 1.2280838014878974e-05,
+          "ratio_median": 0.3473157891671323,
+          "ratio_max": 16.666304210033385
+        },
+        "events": {
+          "cocoa_2023_2024_supply_shock": {
+            "asset": "cocoa",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 23,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 30,
+                "detection_date": "2023-08-08",
+                "signal_at_detection": 0.534103714360748,
+                "baseline_at_detection": 0.12896954897243995,
+                "ratio_at_detection": 4.141316447302478
+              },
+              "90d": {
+                "lead_time_days": 62,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 90,
+                "detection_date": "2023-06-30",
+                "signal_at_detection": 0.4440206420985125,
+                "baseline_at_detection": 0.20647859679371125,
+                "ratio_at_detection": 2.150443915221513
+              },
+              "180d": {
+                "lead_time_days": 171,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 180,
+                "detection_date": "2023-03-13",
+                "signal_at_detection": 0.07771962921807893,
+                "baseline_at_detection": 0.03644386371358404,
+                "ratio_at_detection": 2.1325847837892615
+              }
+            },
+            "multiplier": 1.65
+          },
+          "coffee_2024_brazil_drought": {
+            "asset": "coffee",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 25,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 30,
+                "detection_date": "2024-08-06",
+                "signal_at_detection": 0.3254652768542239,
+                "baseline_at_detection": 0.19107334768435913,
+                "ratio_at_detection": 1.7033525648583474
+              },
+              "90d": {
+                "lead_time_days": 88,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 90,
+                "detection_date": "2024-06-04",
+                "signal_at_detection": 0.6067113161872363,
+                "baseline_at_detection": 0.2621743881626276,
+                "ratio_at_detection": 2.3141517386164026
+              },
+              "180d": {
+                "lead_time_days": 169,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 180,
+                "detection_date": "2024-03-15",
+                "signal_at_detection": 0.18432571369621076,
+                "baseline_at_detection": 0.07839364742483354,
+                "ratio_at_detection": 2.3512838061648864
+              }
+            },
+            "multiplier": 1.65
+          },
+          "sugar_2023_india_export_curb": {
+            "asset": "sugar",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 0,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 30,
+                "detection_date": null,
+                "note": "no detection in lookback window"
+              },
+              "90d": {
+                "lead_time_days": 77,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 90,
+                "detection_date": "2023-06-15",
+                "signal_at_detection": 0.11772919277063867,
+                "baseline_at_detection": 0.06299711227640648,
+                "ratio_at_detection": 1.8688030056693619
+              },
+              "180d": {
+                "lead_time_days": 142,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 180,
+                "detection_date": "2023-04-11",
+                "signal_at_detection": 0.5149351858132448,
+                "baseline_at_detection": 0.2552744786940302,
+                "ratio_at_detection": 2.017182400871502
+              }
+            },
+            "multiplier": 1.65
+          },
+          "cotton_2022_supply_shock": {
+            "asset": "cotton",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 17,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 30,
+                "detection_date": "2022-04-13",
+                "signal_at_detection": 0.7224889367934574,
+                "baseline_at_detection": 0.4340435705510488,
+                "ratio_at_detection": 1.6645539429974896
+              },
+              "90d": {
+                "lead_time_days": 59,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 90,
+                "detection_date": "2022-03-02",
+                "signal_at_detection": 0.23345192734581724,
+                "baseline_at_detection": 0.09101860495699132,
+                "ratio_at_detection": 2.5648814048087134
+              },
+              "180d": {
+                "lead_time_days": 179,
+                "threshold_multiplier": 1.65,
+                "lookback_days": 180,
+                "detection_date": "2021-11-02",
+                "signal_at_detection": 9.532288429103925,
+                "baseline_at_detection": 3.153522486992667,
+                "ratio_at_detection": 3.022743128809689
+              }
+            },
+            "multiplier": 1.65
+          }
+        }
+      }
+    },
+    "single": {
+      "conservative": {
+        "calibration": {
+          "cocoa": {
+            "multiplier": 2.6,
+            "realised_fpr": 0.04740406320541761,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 1.2280838014878974e-05,
+            "ratio_median": 0.36283574047703837,
+            "ratio_max": 16.666304210033385
+          },
+          "coffee": {
+            "multiplier": 3.25,
+            "realised_fpr": 0.04966139954853273,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 0.04108300073810031,
+            "ratio_median": 0.4917663459206702,
+            "ratio_max": 12.940132814452623
+          },
+          "sugar": {
+            "multiplier": 2.05,
+            "realised_fpr": 0.04966139954853273,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 2.1912830244205992e-05,
+            "ratio_median": 0.08578719355395498,
+            "ratio_max": 16.66044089802662
+          },
+          "cotton": {
+            "multiplier": 3.05,
+            "realised_fpr": 0.04966139954853273,
+            "target_fpr": 0.05,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 0.012206545755054438,
+            "ratio_median": 0.41992440413019083,
+            "ratio_max": 14.335648663816356
+          }
+        },
+        "events": {
+          "cocoa_2023_2024_supply_shock": {
+            "asset": "cocoa",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 23,
+                "threshold_multiplier": 2.6,
+                "lookback_days": 30,
+                "detection_date": "2023-08-08",
+                "signal_at_detection": 0.534103714360748,
+                "baseline_at_detection": 0.12896954897243995,
+                "ratio_at_detection": 4.141316447302478
+              },
+              "90d": {
+                "lead_time_days": 23,
+                "threshold_multiplier": 2.6,
+                "lookback_days": 90,
+                "detection_date": "2023-08-08",
+                "signal_at_detection": 0.534103714360748,
+                "baseline_at_detection": 0.12896954897243995,
+                "ratio_at_detection": 4.141316447302478
+              },
+              "180d": {
+                "lead_time_days": 168,
+                "threshold_multiplier": 2.6,
+                "lookback_days": 180,
+                "detection_date": "2023-03-16",
+                "signal_at_detection": 0.17103787897076678,
+                "baseline_at_detection": 0.0470038946332786,
+                "ratio_at_detection": 3.6388022802194038
+              }
+            },
+            "multiplier": 2.6
+          },
+          "coffee_2024_brazil_drought": {
+            "asset": "coffee",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 24,
+                "threshold_multiplier": 3.25,
+                "lookback_days": 30,
+                "detection_date": "2024-08-07",
+                "signal_at_detection": 1.9748383394747135,
+                "baseline_at_detection": 0.2980992471917805,
+                "ratio_at_detection": 6.624767952547738
+              },
+              "90d": {
+                "lead_time_days": 53,
+                "threshold_multiplier": 3.25,
+                "lookback_days": 90,
+                "detection_date": "2024-07-09",
+                "signal_at_detection": 2.191968046931645,
+                "baseline_at_detection": 0.2852449255949788,
+                "ratio_at_detection": 7.684511976363902
+              },
+              "180d": {
+                "lead_time_days": 136,
+                "threshold_multiplier": 3.25,
+                "lookback_days": 180,
+                "detection_date": "2024-04-17",
+                "signal_at_detection": 0.7118609625468567,
+                "baseline_at_detection": 0.10589934635701483,
+                "ratio_at_detection": 6.722052468076472
+              }
+            },
+            "multiplier": 3.25
+          },
+          "sugar_2023_india_export_curb": {
+            "asset": "sugar",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 0,
+                "threshold_multiplier": 2.05,
+                "lookback_days": 30,
+                "detection_date": null,
+                "note": "no detection in lookback window"
+              },
+              "90d": {
+                "lead_time_days": 70,
+                "threshold_multiplier": 2.05,
+                "lookback_days": 90,
+                "detection_date": "2023-06-22",
+                "signal_at_detection": 0.3643031364495532,
+                "baseline_at_detection": 0.08490887945731855,
+                "ratio_at_detection": 4.29051871580379
+              },
+              "180d": {
+                "lead_time_days": 122,
+                "threshold_multiplier": 2.05,
+                "lookback_days": 180,
+                "detection_date": "2023-05-01",
+                "signal_at_detection": 1.8104072996685892,
+                "baseline_at_detection": 0.2784302471902069,
+                "ratio_at_detection": 6.502193342635748
+              }
+            },
+            "multiplier": 2.05
+          },
+          "cotton_2022_supply_shock": {
+            "asset": "cotton",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 2,
+                "threshold_multiplier": 3.05,
+                "lookback_days": 30,
+                "detection_date": "2022-04-28",
+                "signal_at_detection": 3.660115433523869,
+                "baseline_at_detection": 0.6373329617903134,
+                "ratio_at_detection": 5.7428622917012575
+              },
+              "90d": {
+                "lead_time_days": 57,
+                "threshold_multiplier": 3.05,
+                "lookback_days": 90,
+                "detection_date": "2022-03-04",
+                "signal_at_detection": 0.4839065681171546,
+                "baseline_at_detection": 0.12006428041071397,
+                "ratio_at_detection": 4.0303957718466705
+              },
+              "180d": {
+                "lead_time_days": 57,
+                "threshold_multiplier": 3.05,
+                "lookback_days": 180,
+                "detection_date": "2022-03-04",
+                "signal_at_detection": 0.4839065681171546,
+                "baseline_at_detection": 0.12006428041071397,
+                "ratio_at_detection": 4.0303957718466705
+              }
+            },
+            "multiplier": 3.05
+          }
+        }
+      },
+      "sensitive": {
+        "calibration": {
+          "cocoa": {
+            "multiplier": 1.6,
+            "realised_fpr": 0.09029345372460497,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 1.2280838014878974e-05,
+            "ratio_median": 0.36283574047703837,
+            "ratio_max": 16.666304210033385
+          },
+          "coffee": {
+            "multiplier": 2.0,
+            "realised_fpr": 0.09932279909706546,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 0.04108300073810031,
+            "ratio_median": 0.4917663459206702,
+            "ratio_max": 12.940132814452623
+          },
+          "sugar": {
+            "multiplier": 1.2,
+            "realised_fpr": 0.09255079006772009,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 2.1912830244205992e-05,
+            "ratio_median": 0.08578719355395498,
+            "ratio_max": 16.66044089802662
+          },
+          "cotton": {
+            "multiplier": 1.9,
+            "realised_fpr": 0.09706546275395034,
+            "target_fpr": 0.1,
+            "baseline_window": 252,
+            "baseline_statistic": "ema",
+            "ema_lambda": 0.94,
+            "n_eval": 443,
+            "ratio_min": 0.012206545755054438,
+            "ratio_median": 0.41992440413019083,
+            "ratio_max": 14.335648663816356
+          }
+        },
+        "events": {
+          "cocoa_2023_2024_supply_shock": {
+            "asset": "cocoa",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 23,
+                "threshold_multiplier": 1.6,
+                "lookback_days": 30,
+                "detection_date": "2023-08-08",
+                "signal_at_detection": 0.534103714360748,
+                "baseline_at_detection": 0.12896954897243995,
+                "ratio_at_detection": 4.141316447302478
+              },
+              "90d": {
+                "lead_time_days": 62,
+                "threshold_multiplier": 1.6,
+                "lookback_days": 90,
+                "detection_date": "2023-06-30",
+                "signal_at_detection": 0.4440206420985125,
+                "baseline_at_detection": 0.20647859679371125,
+                "ratio_at_detection": 2.150443915221513
+              },
+              "180d": {
+                "lead_time_days": 171,
+                "threshold_multiplier": 1.6,
+                "lookback_days": 180,
+                "detection_date": "2023-03-13",
+                "signal_at_detection": 0.07771962921807893,
+                "baseline_at_detection": 0.03644386371358404,
+                "ratio_at_detection": 2.1325847837892615
+              }
+            },
+            "multiplier": 1.6
+          },
+          "coffee_2024_brazil_drought": {
+            "asset": "coffee",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 24,
+                "threshold_multiplier": 2.0,
+                "lookback_days": 30,
+                "detection_date": "2024-08-07",
+                "signal_at_detection": 1.9748383394747135,
+                "baseline_at_detection": 0.2980992471917805,
+                "ratio_at_detection": 6.624767952547738
+              },
+              "90d": {
+                "lead_time_days": 88,
+                "threshold_multiplier": 2.0,
+                "lookback_days": 90,
+                "detection_date": "2024-06-04",
+                "signal_at_detection": 0.6067113161872363,
+                "baseline_at_detection": 0.2621743881626276,
+                "ratio_at_detection": 2.3141517386164026
+              },
+              "180d": {
+                "lead_time_days": 169,
+                "threshold_multiplier": 2.0,
+                "lookback_days": 180,
+                "detection_date": "2024-03-15",
+                "signal_at_detection": 0.18432571369621076,
+                "baseline_at_detection": 0.07839364742483354,
+                "ratio_at_detection": 2.3512838061648864
+              }
+            },
+            "multiplier": 2.0
+          },
+          "sugar_2023_india_export_curb": {
+            "asset": "sugar",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 0,
+                "threshold_multiplier": 1.2,
+                "lookback_days": 30,
+                "detection_date": null,
+                "note": "no detection in lookback window"
+              },
+              "90d": {
+                "lead_time_days": 77,
+                "threshold_multiplier": 1.2,
+                "lookback_days": 90,
+                "detection_date": "2023-06-15",
+                "signal_at_detection": 0.11772919277063867,
+                "baseline_at_detection": 0.06299711227640648,
+                "ratio_at_detection": 1.8688030056693619
+              },
+              "180d": {
+                "lead_time_days": 142,
+                "threshold_multiplier": 1.2,
+                "lookback_days": 180,
+                "detection_date": "2023-04-11",
+                "signal_at_detection": 0.5149351858132448,
+                "baseline_at_detection": 0.2552744786940302,
+                "ratio_at_detection": 2.017182400871502
+              }
+            },
+            "multiplier": 1.2
+          },
+          "cotton_2022_supply_shock": {
+            "asset": "cotton",
+            "lookback_windows": {
+              "30d": {
+                "lead_time_days": 11,
+                "threshold_multiplier": 1.9,
+                "lookback_days": 30,
+                "detection_date": "2022-04-19",
+                "signal_at_detection": 1.444222490516095,
+                "baseline_at_detection": 0.4819922291973582,
+                "ratio_at_detection": 2.996360528303743
+              },
+              "90d": {
+                "lead_time_days": 59,
+                "threshold_multiplier": 1.9,
+                "lookback_days": 90,
+                "detection_date": "2022-03-02",
+                "signal_at_detection": 0.23345192734581724,
+                "baseline_at_detection": 0.09101860495699132,
+                "ratio_at_detection": 2.5648814048087134
+              },
+              "180d": {
+                "lead_time_days": 179,
+                "threshold_multiplier": 1.9,
+                "lookback_days": 180,
+                "detection_date": "2021-11-02",
+                "signal_at_detection": 9.532288429103925,
+                "baseline_at_detection": 3.153522486992667,
+                "ratio_at_detection": 3.022743128809689
+              }
+            },
+            "multiplier": 1.9
+          }
+        }
+      }
+    }
+  },
+  "fixed_threshold_sensitivity": {
+    "p>0.5": {
+      "cocoa_2023_2024_supply_shock": {
+        "lead_time_days": 107,
+        "probability_threshold": 0.5,
+        "lookback_days": 180,
+        "detection_date": "2023-05-16",
+        "signal_at_detection": 0.8379043074985346
+      },
+      "coffee_2024_brazil_drought": {
+        "lead_time_days": 130,
+        "probability_threshold": 0.5,
+        "lookback_days": 180,
+        "detection_date": "2024-04-23",
+        "signal_at_detection": 0.6097544320819351
+      },
+      "sugar_2023_india_export_curb": {
+        "lead_time_days": 122,
+        "probability_threshold": 0.5,
+        "lookback_days": 180,
+        "detection_date": "2023-05-01",
+        "signal_at_detection": 0.6441796887881971
+      },
+      "cotton_2022_supply_shock": {
+        "lead_time_days": 179,
+        "probability_threshold": 0.5,
+        "lookback_days": 180,
+        "detection_date": "2021-11-02",
+        "signal_at_detection": 0.9050538725053622
+      }
+    },
+    "p>0.9": {
+      "cocoa_2023_2024_supply_shock": {
+        "lead_time_days": 0,
+        "probability_threshold": 0.9,
+        "lookback_days": 180,
+        "detection_date": null,
+        "note": "no detection in lookback window"
+      },
+      "coffee_2024_brazil_drought": {
+        "lead_time_days": 0,
+        "probability_threshold": 0.9,
+        "lookback_days": 180,
+        "detection_date": null,
+        "note": "no detection in lookback window"
+      },
+      "sugar_2023_india_export_curb": {
+        "lead_time_days": 0,
+        "probability_threshold": 0.9,
+        "lookback_days": 180,
+        "detection_date": null,
+        "note": "no detection in lookback window"
+      },
+      "cotton_2022_supply_shock": {
+        "lead_time_days": 179,
+        "probability_threshold": 0.9,
+        "lookback_days": 180,
+        "detection_date": "2021-11-02",
+        "signal_at_detection": 0.9050538725053622
+      }
+    }
+  }
+}

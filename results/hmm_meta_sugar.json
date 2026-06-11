@@ -1,0 +1,15 @@
+{
+  "asset": "sugar",
+  "model": "gaussian_hmm_k3",
+  "n_states": 3,
+  "covariance_type": "diag",
+  "seed": 42,
+  "initial_window_days": 2520,
+  "refit_frequency_days": 21,
+  "n_oos_days": 3708,
+  "n_refits": 177,
+  "walkforward_seconds": 58.2,
+  "first_oos_date": "2010-04-07",
+  "last_oos_date": "2024-12-31",
+  "timestamp": "2026-06-11T18:04:52"
+}

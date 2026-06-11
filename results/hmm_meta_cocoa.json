@@ -1,0 +1,15 @@
+{
+  "asset": "cocoa",
+  "model": "gaussian_hmm_k3",
+  "n_states": 3,
+  "covariance_type": "diag",
+  "seed": 42,
+  "initial_window_days": 2520,
+  "refit_frequency_days": 21,
+  "n_oos_days": 3747,
+  "n_refits": 179,
+  "walkforward_seconds": 61.5,
+  "first_oos_date": "2010-02-08",
+  "last_oos_date": "2024-12-31",
+  "timestamp": "2026-06-11T18:02:50"
+}

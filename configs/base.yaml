@@ -16,6 +16,7 @@ model:
   dist: "studentst"
 
 data:
+  assets: ["cocoa", "coffee", "sugar", "cotton"]
   return_method: "log"
   return_scale: 100
   train_start: "2000-01-01"
@@ -39,7 +40,7 @@ backtest:
   var_levels: [0.95, 0.99]
 
 mlflow:
-  experiment_prefix: "soft_commodities_garch_baseline"
+  experiment_suffix: "_baseline_gjr_garch_t"
   log_artifacts: true
   log_plots: true
 
