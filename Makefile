@@ -51,6 +51,16 @@ predict:
 evaluate:
 	$(PYTHON) -m benchmark.evaluate --asset $(ASSET)
 
+hmm:
+	$(PYTHON) -m benchmark.hmm_regime --asset $(ASSET)
+
+hmm-evaluate:
+	$(PYTHON) -m benchmark.hmm_evaluate
+
+hmm-all:
+	for a in $(ASSETS); do $(PYTHON) -m benchmark.hmm_regime --asset $$a; done
+	$(PYTHON) -m benchmark.hmm_evaluate
+
 reproduce: reproduce-cocoa reproduce-coffee reproduce-sugar reproduce-cotton
 	@echo ""
 	@echo "All four commodities reproduced successfully."
