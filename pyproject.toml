@@ -60,7 +60,7 @@ dev = [
 "Documentation" = "https://github.com/myBytesResearch/soft-commodities-forecast-benchmark#readme"
 "Source" = "https://github.com/myBytesResearch/soft-commodities-forecast-benchmark"
 "Methodology" = "https://mybytes.com/research/garch-soft-commodities-baseline-backtest"
-"Truth-Check protocol" = "https://mybytes.com/research/truth-check-protocol"
+"Truth-Check protocol" = "https://mybytes.com/research/truth-check-protokoll"
 
 [tool.setuptools.packages.find]
 where = ["src"]

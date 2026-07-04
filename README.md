@@ -140,7 +140,7 @@ The companion article on mybytes.com explains:
   schedule we plan to publish it
 
 → [The single-GARCH limit on soft commodities (German)](https://mybytes.com/research/garch-soft-commodities-baseline-backtest)
-→ [Truth-check protocol (German)](https://mybytes.com/research/truth-check-protocol)
+→ [Truth-check protocol (German)](https://mybytes.com/research/truth-check-protokoll)
 
 ## Disclaimer
 

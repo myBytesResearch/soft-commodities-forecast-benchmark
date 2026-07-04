@@ -206,7 +206,7 @@ reproducibility, steel-man, limitations, independent review). The
 status of the seven steps for the companion article is reported in the
 article's frontmatter.
 
-→ [Truth-check protocol (German)](https://mybytes.com/research/truth-check-protocol)
+→ [Truth-check protocol (German)](https://mybytes.com/research/truth-check-protokoll)
 
 ---
 
